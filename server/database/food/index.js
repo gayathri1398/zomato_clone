@@ -21,6 +21,9 @@ const FoodSchema = new mongoose.Schema({
       ref: "Restaurants",
       required: true
   }
+},
+{
+  timestamps: true,    // has 2 properties 1.createdAt 2.updatedAt
 });
 
 export const FoodModel = mongoose.model("Foods", FoodSchema);  //model takes up (collection,schema)
