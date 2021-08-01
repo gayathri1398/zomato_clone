@@ -57,7 +57,7 @@ UserSchema.pre("save", function(next){                //WP-9, WP-10
     bcrypt.hash(user.password, salt, (error,hash)=>{
         if (error) return next(error);
 
-        // asigning hashed password
+        // assigning hashed password
         user.password = hash;
         return next();
       });

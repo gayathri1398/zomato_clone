@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 
 //Models 
 import { UserModel } from "../../database/user";     //WP-2
+import passport from "passport";
 
 const Router = express.Router();                     //WP-1
 
@@ -54,5 +55,34 @@ Router.post("/signin",async (req,res)=> {
         return res.status(500).json({error:error.message });
     }
     });
+
+    /*
+Route           /google
+Des             google signin
+Params          none
+Access          Public
+Method          GET
+*/
+
+Router.get("/google",
+ passport.authenticate("google", 
+   {scope: ["https://www.googleapis.com/auth/userinfo.profile",
+            "https://www.googleapis.com/auth/userinfo.email"]}
+            ));
+
+
+   /*
+Route           /google/callback
+Des             google signin callback
+Params          none
+Access          Public
+Method          GET
+*/
+
+Router.get("/google/callback",
+   passport.authenticate("google", {failureRedirect:"/"}), (req,res)=>{
+       return res.json({token: req.session.passport.user.token})
+   });
+
 
 export default Router;
