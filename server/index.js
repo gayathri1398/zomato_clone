@@ -19,6 +19,7 @@ import Auth from "./API/Auth"
 import Restaurant from "./API/Restaurant";
 import Food from "./API/Food";
 import Menu from "./API/Menu";
+import Image from "./API/Image";
  
 
 const zomato = express();
@@ -40,6 +41,7 @@ zomato.use("/auth", Auth);
 zomato.use("/restaurant", Restaurant);
 zomato.use("/food", Food);
 zomato.use("/menu", Menu);
+zomato.use("/image", Image);
 
 zomato.get("/", (req,res)=> res.json({"message":"Setting up is done successfully!!!!"}));
 

@@ -20,8 +20,8 @@ const OrderSchema = new mongoose.Schema({
         tax: {type: Number, required: true},
 
     },  
-    }],
-    orderRatings: {type: Number, required:true},
+    }]
+  
 },
 {
     timestamps: true,
