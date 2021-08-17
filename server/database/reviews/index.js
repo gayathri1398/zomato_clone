@@ -11,6 +11,8 @@ const ReviewSchema = new mongoose.Schema({
     reviewSubject: {type: String, required: true},
     photos: [{type: mongoose.Types.ObjectId,
               ref: "Images"}],
+    isFoodReview: Boolean,
+    isRestaurantReview: Boolean
 },
 {
     timestamps: true,

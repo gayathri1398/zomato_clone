@@ -43,7 +43,7 @@ Router.get("/c/:category", async(req,res)=>{
     try {
         const {category} = req.params;
         const foods = await FoodModel.find({category:{$regex: category , $options: "i"}});
-        res.json({foods});
+        return res.json({foods});
     } catch (error) {
         return res.status(500).json({error:error.message});
     }

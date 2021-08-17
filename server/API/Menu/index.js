@@ -20,7 +20,7 @@ Method            GET
 Router.get ("/list/:_id", async(req,res)=>{
     try {
         const {_id} = req.params;
-        const menus = await MenuModel.findOne({_id});
+        const menus = await MenuModel.findOne(_id);
         return res.json({menus});
     } catch (error) {
         return res.status(500).json({error:error.message})
@@ -37,8 +37,8 @@ Method            GET
 Router.get("/image/:_id", async(req,res)=>{
     try {
         const {_id} = req.params;
-        const menus = await ImageModel.findOne({_id});
-        return res.json({images});
+        const menus = await ImageModel.findOne(_id);
+        return res.json({menus});
     } catch (error) {
         return res.status(500).json({error:error.message});
     }
