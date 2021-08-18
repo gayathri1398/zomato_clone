@@ -9,6 +9,10 @@ import jwt from "jsonwebtoken";
 import { UserModel } from "../../database/user";     //WP-2
 import passport from "passport";
 
+// validations
+import { ValidateSignin, ValidateSignup } from "../../Validation/auth";
+
+
 const Router = express.Router();                     //WP-1
 
 // Route
@@ -22,6 +26,7 @@ Method          POST
 
 Router.post("/signup",async (req,res)=> {
 try {
+    await ValidateSignup(req.body.credentials);
     await UserModel.findByEmailAndPhone(req.body.credentials);
     const newUser = await UserModel.create(req.body.credentials);                                        //WP-6 
     const token = newUser.generateJwtToken();
@@ -45,6 +50,7 @@ Method          POST
 
 Router.post("/signin",async (req,res)=> {
     try {
+        await ValidateSignin(req.body.credentials);
         const user = await UserModel.findByEmailAndPassword(req.body.credentials);
         const token = user.generateJwtToken();
     
