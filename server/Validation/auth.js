@@ -1,20 +1,20 @@
-import Joi from "joi";
+import joi from "joi";
 
 export const ValidateSignup = (userData)=>{
-    const Schema = Joi.object({
-        fullname: Joi.string().required().min(6),
-        email: Joi.string().required().email(),
-        password: Joi.string().min(5),
-        address: Joi.array().items(Joi.object({detail:Joi.string(),for:Joi.string()})),
-        phoneNumber: Joi.number()
+    const Schema = joi.object({
+        fullname: joi.string().required().min(6),
+        email: joi.string().required().email(),
+        password: joi.string().min(5),
+        address: joi.array().items(joi.object({detail:joi.string(),for:joi.string()})),
+        phoneNumber: joi.number()
     });
     return Schema.validateAsync(userData);
 };
 
 export const ValidateSignin =(userData)=>{
-    const Schema = Joi.object({
-        email:Joi.string().required().email(),
-        password:Joi.string().required()
+    const Schema = joi.object({
+        email:joi.string().required().email(),
+        password:joi.string().required()
     });
     return Schema.validateAsync(userData);
 
