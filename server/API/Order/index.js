@@ -1,9 +1,13 @@
 import express from 'express';
 import passport from 'passport';
 
+// validation
+import { ValidateUserId, ValidateOrderDetails } from '../../Validation/order';
+
 
 // Database Model
 import {OrderModel} from  '../../database/allmodels';
+
 
 const Router = express.Router();
 
@@ -17,7 +21,8 @@ Method          GET
 */
 Router.get("/:_id", async(req,res)=>{
     try {
-        const {_id} = req.params;
+        await ValidateUserId(req.params);
+     const {_id} = req.params;
      const {getOrders} = await OrderModel.findOne({user:_id});
      if (!getOrders)
         return res.status(404).json({error: "User not found"});
@@ -38,6 +43,8 @@ Method           POST
 */
 Router.post("/new/:_id", async(req,res)=>{
     try {
+        await ValidateUserId(req.params);
+        await ValidateOrderDetails(req.body);
         const {_id} = req.params;
         const {orderDetails} = req.body;
 

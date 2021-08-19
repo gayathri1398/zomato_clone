@@ -2,9 +2,16 @@ import express from 'express';
 
 import passport from 'passport';
 
+// validation
+import { ValidateMenuId } from '../../Validation/menu';
+
+
+
+// DatabaseModels
 import { ImageModel } from '../../database/image';
 
 import { MenuModel } from '../../database/menu';
+
 
 const Router = express.Router();
 
@@ -19,6 +26,7 @@ Method            GET
 
 Router.get ("/list/:_id", async(req,res)=>{
     try {
+        await ValidateMenuId(req.params);
         const {_id} = req.params;
         const menus = await MenuModel.findOne(_id);
         return res.json({menus});
