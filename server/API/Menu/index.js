@@ -3,7 +3,7 @@ import express from 'express';
 import passport from 'passport';
 
 // validation
-import { ValidateMenuId } from '../../Validation/menu';
+import { ValidateMenuId,ValidateImageId } from '../../Validation/menu';
 
 
 
@@ -44,6 +44,7 @@ Method            GET
 */
 Router.get("/image/:_id", async(req,res)=>{
     try {
+        await ValidateImageId(req.params);
         const {_id} = req.params;
         const menus = await ImageModel.findOne(_id);
         return res.json({menus});
