@@ -19,7 +19,7 @@ Params          _id
 Access          Public
 Method          GET
 */
-Router.get("/:_id", async(req,res)=>{
+Router.get("/:_id",passport.authenticate("jwt", {session:false}) ,async(req,res)=>{
     try {
         await ValidateUserId(req.params);
      const {_id} = req.params;
