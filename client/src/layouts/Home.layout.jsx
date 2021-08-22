@@ -1,8 +1,14 @@
 import React from "react";
 
+// Components
+import Navbar from "../components/Navbar";
+
+
 const HomeLayout=(props)=>{
     return<>
-    <h1>Hello Home Layout </h1>
+    <div className="lg:px-40">
+    <Navbar/>
+    </div>
      {props.children}
    
     </>
