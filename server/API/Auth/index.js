@@ -78,7 +78,7 @@ Router.get("/google",
 
 
    /*
-Route           /google/callback1
+Route           /google/callback
 Des             google signin callback
 Params          none
 Access          Public
