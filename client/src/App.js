@@ -1,10 +1,17 @@
 import React from "react";
 
+// HOC
+import HomeHocLayout from "./HOC/Home.Hoc";
+
+// Component
+import Temp from "./components/Temp";
+
+
 function App() {
   return (
-    <div>
-       <h1 className="text-blue-500">Hello</h1>
-    </div>
+    <>
+      <HomeHocLayout path="/" exact component={Temp}/>
+    </>
   );
 }
 
