@@ -61,7 +61,7 @@ const Navbar = () => {
             <div className="hidden lg:block"><Navlg/></div>
         </nav>
         </>
-    )
+    ) 
 };
 
 export default Navbar;
