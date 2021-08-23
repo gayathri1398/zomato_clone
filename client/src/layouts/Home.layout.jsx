@@ -7,10 +7,9 @@ import Navbar from "../components/Navbar";
 
 const HomeLayout=(props)=>{
     return<>
-    <div className="lg:px-40">
-    <Navbar/>
-    <FoodTabs/>
-    </div>
+    <div className="lg:px-40"><Navbar/></div>
+    <div className="border-b"><FoodTabs/></div>
+ 
      {props.children}
    
     </>

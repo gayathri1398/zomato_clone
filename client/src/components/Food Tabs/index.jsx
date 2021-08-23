@@ -29,7 +29,7 @@ const MobileFoodTabs=()=>{
 }
 const LargeFoodTabs=()=>{
     return<>
-      <div className="flex items-center gap-12 mt-8 ml-8">
+      <div className=" container mx-auto px-40 flex items-center gap-12 mt-8 ml-8 py-4">
       <div className="flex items-center gap-3 text-gray-500">
        <div className="w-16 h-16 rounded-full bg-gray-100 p-3 ">
         <img src="https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png" 
@@ -70,7 +70,7 @@ const LargeFoodTabs=()=>{
 const FoodTabs=()=>{
     return<>
      <div className="lg:hidden"><MobileFoodTabs/></div> 
-     <div><LargeFoodTabs/></div> 
+     <div className="hidden lg:inline"><LargeFoodTabs/></div> 
     </>
 };
 
