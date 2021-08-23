@@ -52,7 +52,6 @@ const Navlg=()=>{
 };
 
 
-
 const Navbar = () => {
     return (
         <>
