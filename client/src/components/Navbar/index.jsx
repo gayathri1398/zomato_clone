@@ -5,6 +5,7 @@ import {TiArrowSortedDown} from 'react-icons/ti';
 import {BsSearch} from 'react-icons/bs';
 
 const Navsm=()=>{
+    
     return<>
      <div className="flex items-center justify-between px-3 bg-white shadow-md ">
      <div className="w-24 m-4 ">
