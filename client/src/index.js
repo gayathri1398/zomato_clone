@@ -4,6 +4,15 @@ import {BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './App';
 
+// react-slick
+
+
+
+// css for slick carousel
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+
 
 ReactDOM.render(
   <React.StrictMode>
