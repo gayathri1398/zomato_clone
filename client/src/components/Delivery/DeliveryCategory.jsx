@@ -19,7 +19,7 @@ const DeliverySmCard=({image,title})=>{
 const DeliveryLgCard=({image,title})=>{
     return <>
         <div className="hidden lg:block rounded-lg w-72">
-      <div className=" h-44 ">
+      <div className="w-64 h-44 ">
             <img src= {image}
              alt="fooditems"
              className="w-full h-full rounded-t-lg object-cover"  />
