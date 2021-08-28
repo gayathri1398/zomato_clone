@@ -3,9 +3,9 @@ import {AiTwotoneStar} from 'react-icons/ai'
 
 const RestaurantCard = (props) => {
     return<>
-     <div className="mb-2 m-4 bg-white rounded-2xl shadow-lg lg:shadow-none lg:w-80 hover:shadow-lg transition duration-700 ease-in-out">
+     <div className="mb-2 m-4 bg-white rounded-2xl shadow-lg md:w-5/12 lg:shadow-none lg:w-80 hover:shadow-lg transition duration-700 ease-in-out">
        
-        <div className="relative " >     
+        <div className="relative" >     
             <div className="w-full h-48 p-2 md:h-52 lg:w-80 lg:h-60" >
                 <img src={props.photos.length && props.photos[0]} 
                 alt="Food"

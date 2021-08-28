@@ -29,13 +29,14 @@ const NutritionCarousal = () => {
   
     return (
         <>
-      <div className="lg:w-full px-8">  
+      <div className="w-full">  
       <Slider {...settings}>
           { nutrition.map((image)=>(
             <NutritionCarousalCard image={image}/>
                 ))}
-        </Slider>
+      </Slider>
       </div>
+ 
 
       </>
     )

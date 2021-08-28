@@ -58,7 +58,6 @@ const DeliveryCarousel = () => {
              <DeliveryCategory {...food}
             />
             )}
-           
             </Slider>
         </div>
        </>
