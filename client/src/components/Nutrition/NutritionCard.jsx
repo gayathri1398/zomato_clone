@@ -5,7 +5,8 @@ import {BsStar,BsStarHalf,BsStarFill} from 'react-icons/bs';
 const NutritionCard = () => {
     return (
         <>
-        <div className="w-full lg:w-1/3 rounded-lg bg-white shadow-lg">
+        <div className="w-full p-3 md:w-1/2 lg:w-1/3 ">
+        <div className="rounded-lg bg-white shadow-lg ">
         <div className="w-full h-48 bg-blue-100 rounded-t-lg" >
             <img src="https://dote.zmtcdn.com/prod/data/admin_assets/images/34e/384e52f7a60c840377ede182dcd3d34e_1614427090.png?output-format=webp"
              alt="medicine" 
@@ -39,6 +40,7 @@ const NutritionCard = () => {
          <hr className="my-2"/>
          <s className="text-gray-500">₹500</s><strong className="pl-1">₹200</strong>
          <p className="text-gray-500">monthly pack- 30 tablets</p>
+        </div>
         </div>
         </div>
        

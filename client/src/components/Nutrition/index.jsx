@@ -17,7 +17,8 @@ const Nutrition = () => {
         </div>
             <div className="w-full my-12   "><NutritionCarousal2/></div>
           <div >
-              <h1 className="text-lg font-medium lg:text-xl mb-4 flex flex-wrap">All Products</h1>
+              <h1 className="text-lg ml-3 font-medium lg:text-xl mb-4">All Products</h1>
+              <div className="flex flex-wrap ">
               <NutritionCard/>
               <NutritionCard/>
               <NutritionCard/>
@@ -25,7 +26,8 @@ const Nutrition = () => {
               <NutritionCard/>
               <NutritionCard/>
               <NutritionCard/>
-              
+
+              </div>
           </div>
           </div>
         </>
