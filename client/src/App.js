@@ -8,7 +8,7 @@ import RestaurantHocLayout from "./HOC/Restaurant.Hoc"
 // Component
 import Temp from "./components/Temp";
 import HomePage from "./pages/Home.page";
-import DeliveryPage from "./components/Delivery";
+
 
 
 

@@ -9,7 +9,7 @@ const RestaurantHocLayout =({component:Component,...rest})=>{
     <Route {...rest}
     component={(props)=>
         <Restaurantlayout>
-            Component(...props)
+            <Component{...props}/>
             </Restaurantlayout>}>
 
     </Route>
