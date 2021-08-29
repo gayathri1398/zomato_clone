@@ -2,13 +2,13 @@ import React from 'react';
 import ReactStars from "react-rating-stars-component";
 import {BsStar,BsStarHalf,BsStarFill} from 'react-icons/bs';
 
-const NutritionCard = () => {
+const NutritionCard = (props) => {
     return (
         <>
         <div className="w-full p-3 md:w-1/2 lg:w-1/3 ">
         <div className="rounded-lg bg-white shadow-lg ">
-        <div className="w-full h-48 bg-blue-100 rounded-t-lg" >
-            <img src="https://dote.zmtcdn.com/prod/data/admin_assets/images/34e/384e52f7a60c840377ede182dcd3d34e_1614427090.png?output-format=webp"
+        <div className={`w-full h-36 lg:h-48 bg-${props.bg}-100 rounded-t-lg`} >
+            <img src={props.image}
              alt="medicine" 
              className="w-full h-full object-contain"/>
         </div>

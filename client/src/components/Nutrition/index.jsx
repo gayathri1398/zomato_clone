@@ -15,11 +15,11 @@ const Nutrition = () => {
         <div className="w-11/12 lg:w-full ">
             <NutritionCarousal  />
         </div>
-            <div className="w-full my-12   "><NutritionCarousal2/></div>
+            <div className="w-full my-12"><NutritionCarousal2/></div>
           <div >
               <h1 className="text-lg ml-3 font-medium lg:text-xl mb-4">All Products</h1>
               <div className="flex flex-wrap ">
-              <NutritionCard/>
+              <NutritionCard bg="yellow" image="https://dote.zmtcdn.com/prod/data/admin_assets/images/34e/384e52f7a60c840377ede182dcd3d34e_1614427090.png?output-format=webp"/>
               <NutritionCard/>
               <NutritionCard/>
               <NutritionCard/>
