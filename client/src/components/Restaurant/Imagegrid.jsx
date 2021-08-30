@@ -11,14 +11,14 @@ const Restaurantgrid = (props) => {
          className="w-full h-full" />
         </div>
 
-        <div className="w-full ml-9">
+        <div className="w-full mt-5">
         <div className="flex gap-1 md:h-80 lg:h-96">
-        <div className="hidden md:block w-7/12 overflow-hidden rounded-lg">
+        <div className="hidden md:block w-full overflow-hidden rounded-lg">
          <img src={props.image.length && props.image[0]}
          alt="restaurant food image"
          className="w-full h-full object-cover rounded-lg transform hover:scale-110 transition duration-500 ease-out " />
          </div>
-           <div className=" w-1/3 flex gap-1">
+           <div className=" w-1/2 flex gap-1">
            <div className="flex flex-col gap-1">
              <div className="hidden md:block w-full h-48 overflow-hidden rounded-lg">
                 <img src={props.image.length && props.image[1]}

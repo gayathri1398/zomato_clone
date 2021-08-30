@@ -25,8 +25,8 @@ const Navsm=()=>{
 
 const Navlg=()=>{
     return <>
-     <div className="flex items-center">
-     <div className="w-36 m-6 ">
+     <div className="flex items-center mt-3 ">
+     <div className="w-36 mr-6 ">
         <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" 
         alt="zomato logo"
         className="w-full h-full"/>
@@ -45,7 +45,7 @@ const Navlg=()=>{
        placeholder="Search for restaurant, cuisine or a dish"
        className="w-full outline-none" />
     </div>
-    <div className="flex text-gray-400 gap-8 w-1/5 text-xl">
+    <div className="flex gap-8 text-gray-400 text-lg  ">
        <button className="text-gray hover:text-gray-500" >Log in</button>
        <button className="text-gray hover:text-gray-500">Sign up</button>
     </div>
