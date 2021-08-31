@@ -21,6 +21,11 @@ function App() {
       {/* <HomeHocLayout path="/" exact component={Temp}/> */}
       <HomeHocLayout path="/:type" exact component={HomePage}/>
       <RestaurantHocLayout path="/restaurant/:id" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/reviews" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/menu" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/photos" exact component={Temp}/>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {IoMdStarOutline} from 'react-icons/io';
+
 import classNames from 'classnames';
 
 const InfoButtons = (props) => {

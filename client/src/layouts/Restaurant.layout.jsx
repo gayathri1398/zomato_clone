@@ -11,6 +11,9 @@ import Navbar from '../components/Navbar/restaurant';
 import Restaurantgrid from '../components/Restaurant/Imagegrid';
 import InfoButtons from '../components/Restaurant/InfoButtons';
 import Restaurantinfo from '../components/Restaurant/restaurantinfo';
+import TabsContainer from '../components/Restaurant/Tabs';
+// import TabsContainer from '../components/Restaurant/Tabs;'
+
 
 
 const Restaurantlayout = (props) => {
@@ -38,6 +41,7 @@ const Restaurantlayout = (props) => {
              <RiShareForwardLine/> Share
             </InfoButtons>
            </div>
+           <TabsContainer/>
            </div>
            </div>
            {props.children}
