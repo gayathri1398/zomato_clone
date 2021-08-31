@@ -1,5 +1,5 @@
 import React from "react";
-import {Redirect, Route} from 'react-router-dom'
+import {Redirect, Route,useParams} from 'react-router-dom'
 
 // HOC
 import HomeHocLayout from "./HOC/Home.Hoc";
@@ -15,10 +15,14 @@ import Overviewpage from "./pages/Restaurant/Overview.page";
 
 
 function App() {
+  const{id} =useParams();
   return (
     <>
   <Route path="/" exact >
      <Redirect to="/delivery"/>
+  </Route>
+  <Route path="/restaurant/:id" exact>
+    <Redirect to={`/restaurant/${id}/overview`}/>
   </Route>
       {/* <HomeHocLayout path="/" exact component={Temp}/> */}
       <HomeHocLayout path="/:type" exact component={HomePage}/>
