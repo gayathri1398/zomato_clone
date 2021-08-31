@@ -6,10 +6,13 @@ import { useLocation,Link,useParams } from 'react-router-dom';
      const {id} = useParams();
      return<>
      <Link to ={`/restaurant/${id}/${props.route}`}>
-    <div className={classNames("text-gray-600 text-xl",{"text-zomato-400 fontsemibold":props.isActive})}>
+    <div className={classNames(" text-gray-600 text-base lg:text-xl",{"text-zomato-400 fontsemibold border-b-2 pb-4 border-zomato-400 ":props.isActive})}>
      <h1>{props.title}</h1>
+    
     </div>
+    
     </Link>
+ 
     </>
 }
 
@@ -26,7 +29,7 @@ const TabsContainer = () => {
 
          },
          {
-            title:"Order Online",
+            title:"OrderOnline",
             route:"order-online",
             isActive:currentPath.includes("order-online")
 
@@ -53,7 +56,7 @@ const TabsContainer = () => {
         
     ]
     return (
-        <div className="flex gap-6 md:gap-16 overflow-x-scroll">
+        <div className="flex gap-8 overflow-x-scroll md:overflow-hidden  md:gap-16 ">
             {tabs.map((tab)=>(
                  <Tabs{...tab} key={`123${tab.route}`} />
             ))}

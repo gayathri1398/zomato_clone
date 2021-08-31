@@ -12,7 +12,8 @@ import Restaurantgrid from '../components/Restaurant/Imagegrid';
 import InfoButtons from '../components/Restaurant/InfoButtons';
 import Restaurantinfo from '../components/Restaurant/restaurantinfo';
 import TabsContainer from '../components/Restaurant/Tabs';
-// import TabsContainer from '../components/Restaurant/Tabs;'
+
+
 
 
 
@@ -41,8 +42,10 @@ const Restaurantlayout = (props) => {
              <RiShareForwardLine/> Share
             </InfoButtons>
            </div>
-           <TabsContainer/>
+           <div className="relative border-b md:pb-0 md:border-b-2"> 
+                 <TabsContainer/></div>
            </div>
+          
            </div>
            {props.children}
 

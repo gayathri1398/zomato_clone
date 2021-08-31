@@ -8,6 +8,8 @@ import RestaurantHocLayout from "./HOC/Restaurant.Hoc"
 // Component
 import Temp from "./components/Temp";
 import HomePage from "./pages/Home.page";
+import Overviewpage from "./pages/Restaurant/Overview.page";
+
 
 
 
@@ -21,7 +23,7 @@ function App() {
       {/* <HomeHocLayout path="/" exact component={Temp}/> */}
       <HomeHocLayout path="/:type" exact component={HomePage}/>
       <RestaurantHocLayout path="/restaurant/:id" exact component={Temp}/>
-      <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Overviewpage}/>
       <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/reviews" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/menu" exact component={Temp}/>
