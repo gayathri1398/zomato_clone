@@ -1,6 +1,9 @@
 import React from 'react'
 import Slider from 'react-slick';
 import ReactStars from "react-rating-stars-component";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import {AiOutlineCopy} from 'react-icons/ai';
+import {FaDirections} from 'react-icons/fa'
 
 
 // components
@@ -104,6 +107,26 @@ const Overviewpage = () => {
                     <p>+919884471759</p>
                     <div className="mt-4 text-base md:text-xl">
                         <h1>Direction</h1>
+                    </div>
+                    <div className="w-full h-48">
+                    <MapContainer center={[13.14564418191485, 80.18286445453698]} zoom={13} scrollWheelZoom={false}>
+                      <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <Marker position={[13.14564418191485, 80.18286445453698]}>
+                        <Popup>
+                          A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                      </Marker>
+                    </MapContainer>
+                    </div>
+                    <div className="flex flex-col gap-2 pb-4">
+                      <p>5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai</p>
+                    <div className="flex items-center gap-3">
+                    <button className="flex gap-1 items-center border-2 border-gray-400 p-1 rounded-lg "> <span><AiOutlineCopy/></span> Copy</button>
+                      <button className="flex gap-1 items-center border-2 border-gray-400 p-1 rounded-lg "> <span className="text-zomato-400"><FaDirections/></span> Direction</button>
+                    </div>
                     </div>
                 </div>
             </aside>
