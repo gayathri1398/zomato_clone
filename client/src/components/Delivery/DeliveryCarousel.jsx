@@ -53,7 +53,7 @@ const DeliveryCarousel = () => {
            )}
         </div>
         <div className="hidden lg:block ">
-            <Slider{...settings}>
+            <Slider {...settings}>
             {categories.map((food)=>
              <DeliveryCategory {...food}
             />
