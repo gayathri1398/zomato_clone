@@ -12,7 +12,7 @@ const MenuListContainer = () => {
        setIsSelected (e.target.id);
     }
     return (
-        <div>
+        <div className="flex flex-col gap-2 ">
              <MenuCategory name="Recommended"
               items={["",""]}
               onClickHandler={onClickHandler}
@@ -28,6 +28,17 @@ const MenuListContainer = () => {
               onClickHandler={onClickHandler}
               isActive = {isSelected==="Recommended"}
               />
+              <MenuCategory name="Recommended"
+              items={["",""]}
+              onClickHandler={onClickHandler}
+              isActive = {isSelected==="Recommended"}
+              />
+                <MenuCategory name="Recommended"
+              items={["",""]}
+              onClickHandler={onClickHandler}
+              isActive = {isSelected==="Recommended"}
+              />
+              
         </div>
     )
 }
