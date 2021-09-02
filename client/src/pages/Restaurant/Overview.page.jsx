@@ -1,9 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick';
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import {AiOutlineCopy} from 'react-icons/ai';
-import {FaDirections} from 'react-icons/fa'
+
 
 
 // components
@@ -13,6 +11,9 @@ import { NextArrow,PrevArrow } from '../../components/CarouselArrow';
 // components
 import MenuCollection from '../../components/Restaurant/MenuCollection';
 import {MenuSimilarRestaurant} from '../../components/Restaurant/MenuSimilarRestaurant';
+import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
+import MapView from '../../components/Restaurant/MapView';
+
 
 const Overviewpage = () => {
     const settings = {
@@ -99,36 +100,21 @@ const Overviewpage = () => {
                 activeColor="#ffd700"
                />
              </div>
-            </div>
+             <div className="md:hidden">
+               <MapView phno="+91233445357"
+               address=" 5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai"
+               mapLocation={[13.14564418191485, 80.18286445453698] }/>
+             </div>
+             <ReviewCard/>
+             <ReviewCard/>
+             <ReviewCard/>
+             <ReviewCard/>
+              </div>
             
-            <aside className="md:w-5/12">
-                <div className="bg-white shadow-lg rounded-lg md:sticky top-0 px-3">
-                    <h1 className="text-base md:text-xl">Call</h1>
-                    <p>+919884471759</p>
-                    <div className="mt-4 text-base md:text-xl">
-                        <h1>Direction</h1>
-                    </div>
-                    <div className="w-full h-48">
-                    <MapContainer center={[13.14564418191485, 80.18286445453698]} zoom={13} scrollWheelZoom={false}>
-                      <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      />
-                      <Marker position={[13.14564418191485, 80.18286445453698]}>
-                        <Popup>
-                          A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                      </Marker>
-                    </MapContainer>
-                    </div>
-                    <div className="flex flex-col gap-2 pb-4">
-                      <p>5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai</p>
-                    <div className="flex items-center gap-3">
-                    <button className="flex gap-1 items-center border-2 border-gray-400 p-1 rounded-lg "> <span><AiOutlineCopy/></span> Copy</button>
-                      <button className="flex gap-1 items-center border-2 border-gray-400 p-1 rounded-lg "> <span className="text-zomato-400"><FaDirections/></span> Direction</button>
-                    </div>
-                    </div>
-                </div>
+            <aside className="hidden md:block w-5/12">
+            <MapView phno="+91233445357"
+               address=" 5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai"
+               mapLocation={[13.14564418191485, 80.18286445453698] }/>
             </aside>
         
             

@@ -9,9 +9,7 @@ import RestaurantHocLayout from "./HOC/Restaurant.Hoc"
 import Temp from "./components/Temp";
 import HomePage from "./pages/Home.page";
 import Overviewpage from "./pages/Restaurant/Overview.page";
-
-
-
+import OrderOnlinepage from "./pages/Restaurant/OrderOnline.page";
 
 
 function App() {
@@ -28,7 +26,7 @@ function App() {
       <HomeHocLayout path="/:type" exact component={HomePage}/>
       <RestaurantHocLayout path="/restaurant/:id" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Overviewpage}/>
-      <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={OrderOnlinepage}/>
       <RestaurantHocLayout path="/restaurant/:id/reviews" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/menu" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/photos" exact component={Temp}/>
