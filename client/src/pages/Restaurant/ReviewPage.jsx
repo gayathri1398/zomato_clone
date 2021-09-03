@@ -4,10 +4,15 @@ import ReactStars from 'react-rating-stars-component';
 
 // components
 import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
+import ReviewModal from '../../components/Restaurant/Reviews/ReviewModal';
+
 
 const ReviewPage = () => {
     return (
+        <>
+       
         <div className="px-2 lg:px-52 flex flex-col md:flex-row my-2">
+        
             <div>
                 <ReviewCard/>
                 <ReviewCard/>
@@ -32,10 +37,12 @@ const ReviewPage = () => {
                     </div>
 
                     <ReactStars count={5} value={3} size={24}/>
-                    <button className="text-zomato-400 text-lg mt-3">Write a Review</button>
+                   <ReviewModal/>
+                    <button className="text-zomato-400 text-lg mt-3 ">Write a Review</button>
                 </div>
             </aside>
         </div>
+        </>
     )
 }
 
