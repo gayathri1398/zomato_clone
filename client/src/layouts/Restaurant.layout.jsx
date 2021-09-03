@@ -27,7 +27,7 @@ const Restaurantlayout = (props) => {
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*"]} />
-           <div className="px-2"> <Restaurantinfo/>
+           <div className="px-2 "> <Restaurantinfo/>
            <div className="my-4 flex flex-wrap gap-3 ">
            <InfoButtons isActive>
              <MdStarBorder/> Add Review

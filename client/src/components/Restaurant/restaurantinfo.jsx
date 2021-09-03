@@ -4,7 +4,7 @@ import {TiStar} from "react-icons/ti"
 const Restaurantinfo = () => {
     return (
         <>
-        <div className="flex flex-col flex-col-reverse md:flex-row md:items-center justify-between">
+        <div className="flex flex-col flex-col-reverse md:flex-row md:items-center justify-between ">
         <h1 className="text-2xl mt-2 md:text-4xl font-medium">Pizza Hut</h1>
         <div className="flex gap-8">
         <div className="flex items-center gap-2">
