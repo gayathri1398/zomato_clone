@@ -12,7 +12,7 @@ const MenuListContainer = () => {
        setIsSelected (e.target.id);
     }
     return (
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col gap-2 h-screen border-r">
              <MenuCategory name="Recommended"
               items={["",""]}
               onClickHandler={onClickHandler}

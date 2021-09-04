@@ -1,9 +1,17 @@
 import React from 'react';
 import {TiStar} from 'react-icons/ti'
 
+
+
+
 const ReviewCard = (props) => {
+ 
+
+   
+
     return (
         <>
+
         <div className="flex items-center justify-between my-4 mr-4">
             <div className="flex gap-2">
             <div className="w-12 h-12 rounded-full bg-blue">
