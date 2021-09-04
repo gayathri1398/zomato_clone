@@ -1,17 +1,31 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import {IoMdArrowDropright} from 'react-icons/io';
 import { Link ,useParams} from 'react-router-dom';
+import ImageViewer from 'react-simple-image-viewer';
 
-const MenuCollection = () => {
+const MenuCollection = (props) => {
     const {id} = useParams();
-
+    const [currentImage, setCurrentImage] = useState(0);
+    const [isViewerOpen,setIsviewerOpen] = useState(false)
+    
+    const openImageViewer = ()=> setIsviewerOpen (!isViewerOpen);  // or const openImageViewer = ()=> setIsviewerOpen (true); 
+    const closeImageViewer=()=>setIsviewerOpen(false);
     return (
         <>
-       <div className="flex justify-between items-start my-4">
+         {isViewerOpen && (
+        <ImageViewer
+          src={props.images }
+          currentIndex={ currentImage }
+          disableScroll={ false }
+          closeOnClickOutside={ true }
+          onClose={ closeImageViewer }
+        />
+      )}
+       <div className="flex justify-between items-start my-4" onClick={openImageViewer}>
        <div className="flex flex-col gap-2">
             <h1 className="text-xl ">Menu</h1>
               <div className="w-36 h-36 rounded-lg overflow-hidden md:w-60 md:h-60 ">
-                <img src="https://b.zmtcdn.com/data/menus/964/19647964/40250727c7b9fc1a6a8bdd12e77162cd.jpg"
+                <img src={props.images}
                  alt="menucollection"
                  className="w-full h-full object-cover rounded-lg transform hover:scale-110 trnsition duration-500 ease-out" />
               </div>

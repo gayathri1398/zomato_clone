@@ -11,6 +11,8 @@ import HomePage from "./pages/Home.page";
 import Overviewpage from "./pages/Restaurant/Overview.page";
 import OrderOnlinepage from "./pages/Restaurant/OrderOnline.page";
 import ReviewPage from "./pages/Restaurant/ReviewPage";
+import Menupage from "./pages/Restaurant/Menu.page";
+
 
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
       <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Overviewpage}/>
       <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={OrderOnlinepage}/>
       <RestaurantHocLayout path="/restaurant/:id/reviews" exact component={ReviewPage}/>
-      <RestaurantHocLayout path="/restaurant/:id/menu" exact component={Temp}/>
+      <RestaurantHocLayout path="/restaurant/:id/menu" exact component={Menupage}/>
       <RestaurantHocLayout path="/restaurant/:id/photos" exact component={Temp}/>
     </>
   );
