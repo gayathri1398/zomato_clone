@@ -2,11 +2,15 @@ import React from 'react'
 
 // components
 import FoodItem from './FoodItem'
-const FoodList = () => {
+const FoodList = (props) => {
     return (
         <>
         <div>
-       <div className="sticky top-2 text-lg md:text-2xl p-2 bg-white z-20" > Recommended </div>
+       <div className="sticky top-2 text-lg md:text-2xl p-2 bg-white z-20" > {props.title}</div>
+       {props.items.map((item)=>(
+            <FoodItem {...item}/>
+       ))}
+{/* 
                <FoodItem
                title="Chicken Maximus Pizza [Medium]"
                price="599"
@@ -36,8 +40,8 @@ const FoodList = () => {
                price="599"
                description="Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages 
                & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."/>
-               </div>
-   
+               </div> */}
+   </div>
         </>
     )
 }

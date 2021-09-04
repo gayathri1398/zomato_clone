@@ -6,7 +6,7 @@ const FoodItem = (props) => {
     return (
         <div className=" w-full flex items-start md:gap-3 justify-between  " >
             <div className="w-24 h-24 md:w-1/5 h-32 rounded-lg p-1">
-                <img src="https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*"
+                <img src={props.image}
                  alt="Fooditems"
                  className="w-full h-full rounded-lg" />
             </div>
