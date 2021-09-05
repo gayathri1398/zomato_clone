@@ -8,6 +8,7 @@ import PhotoCollection from '../../components/Restaurant/PhotoCollection';
 const PhotoPage = (props) => {
    
    const [photos, setPhotos] =useState(["https://b.zmtcdn.com/data/pictures/8/19005048/1194a6dc791af6d1f36d4f8bc1c381e6.jpg?",
+  "https://b.zmtcdn.com/data/pictures/8/19005048/4d083a0c12a30ccc6b2e0bc019c11f4c.jpg?","https://b.zmtcdn.com/data/pictures/8/19005048/1194a6dc791af6d1f36d4f8bc1c381e6.jpg?",
   "https://b.zmtcdn.com/data/pictures/8/19005048/4d083a0c12a30ccc6b2e0bc019c11f4c.jpg?"]);
    
    const [currentImage, setCurrentImage] = useState(0);

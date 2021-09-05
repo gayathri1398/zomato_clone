@@ -6,7 +6,7 @@ const PhotoCollection = (props) => {
     return (
         <>
       
-      <div className=" rounded-lg w-28 h-32 md:w-48 h-44 overflow-hidden"
+      <div className=" rounded-lg w-36 h-36 md:w-48 h-44 overflow-hidden"
         onClick={props.openImageViewer} >
           <img src={props.image}
           alt="foodphoto" 
