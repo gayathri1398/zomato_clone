@@ -1,26 +1,20 @@
-import React ,{useState} from 'react';
+import React  from 'react';
 
 
 const PhotoCollection = (props) => {
   
     return (
         <>
-        
-       <div className="flex items-center flex wrap gap-3"   >
       
-          <div className="w-48 h-44 rounded-lg"  >
+      <div className=" rounded-lg w-28 h-32 md:w-48 h-44 overflow-hidden"
+        onClick={props.openImageViewer} >
           <img src={props.image}
           alt="foodphoto" 
-          className="w-full h-full rounded-lg"
-          onClick={props.openImageViewer}
+          className="w-full h-full rounded-lg object-fit transform hover:scale-110 transition duration-500 ease out"
+         
          />
          
       </div>
-  
-
-       </div>
-      
-  
     </>
     )
 }
