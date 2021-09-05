@@ -1,7 +1,8 @@
 import React from 'react'
 import Slider from 'react-slick';
 import ReactStars from "react-rating-stars-component";
-
+import {IoMdArrowDropright} from 'react-icons/io';
+import { Link ,useParams} from 'react-router-dom';
 
 
 // components
@@ -16,6 +17,7 @@ import MapView from '../../components/Restaurant/MapView';
 
 
 const Overviewpage = () => {
+  const {id} = useParams();
     const settings = {
         arrows:true,
         infinite: true,
@@ -63,7 +65,19 @@ const Overviewpage = () => {
             <div className="w-full md:w-3/5">
                <h1 className="text-xl font-semibold md:text-2xl">About this page</h1>
             <div className="mb-4">
-                <MenuCollection images={["https://b.zmtcdn.com/data/menus/852/19247852/70d8b5aa09a0fe71347c3983da946b01.jpg?","https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg","https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg"]}/>
+            <div className="flex items-center justify-between">
+            <h1 className="text-xl ">Menu</h1>
+            <Link to={`/restaurant/${id}/menu`}>
+          <p className="text-sm flex gap-1 items-center text-zomato-400 pr-4">See all menus
+            <IoMdArrowDropright className="text-xl"/>
+            </p></Link>
+            </div>
+           
+                <MenuCollection menuTitle="Menu"
+                pages="3 "
+                 images={["https://b.zmtcdn.com/data/menus/852/19247852/70d8b5aa09a0fe71347c3983da946b01.jpg?",
+                "https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg",
+                "https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg"]}/>
             </div>
               <h1 className="text-xl pb-2">Cuisines</h1>  
               <div className="flex items-center gap-2 mb-4" >
