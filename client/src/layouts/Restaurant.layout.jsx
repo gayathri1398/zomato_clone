@@ -12,7 +12,7 @@ import Restaurantgrid from '../components/Restaurant/Imagegrid';
 import InfoButtons from '../components/Restaurant/InfoButtons';
 import Restaurantinfo from '../components/Restaurant/restaurantinfo';
 import TabsContainer from '../components/Restaurant/Tabs';
-
+import CartContainer from '../components/Cart/CartContainer';
 
 
 
@@ -48,6 +48,9 @@ const Restaurantlayout = (props) => {
           
            </div>
            {props.children}
+           <div className="container mx auto  ">
+           <CartContainer/>
+           </div>
 
       
 </>

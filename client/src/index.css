@@ -7,4 +7,5 @@
 .leaflet-container{
     width:inherit;
     height:inherit;
+    z-index: 1;
 }

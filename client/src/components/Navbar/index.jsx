@@ -69,13 +69,15 @@ const Navlg=({SignIn,SignUp})=>{
 
 
 const Navbar = () => {
-    const [isOpen,setIsOpen] = useState(false);
+    const [isOpenSignIn,setIsOpenSignIn] = useState(false);
     const [isOpenSignup,setIsOpenSignup] = useState(false);
-    const openSignIn=()=>setIsOpen(true)
+
+    // functions
+    const openSignIn=()=>setIsOpenSignIn(true)
     const openSignup =()=>setIsOpenSignup(true)
     return (
         <>
-    <SignIn isOpen={isOpen}  setIsOpen={setIsOpen} />
+    <SignIn isOpen={isOpenSignIn}  setIsOpen={setIsOpenSignIn} />
     <SignUp isOpen={isOpenSignup} setIsOpen={setIsOpenSignup}/>
         <nav > 
             <div className="block lg:hidden"><Navsm SignIn={openSignIn} SignUp={openSignup} /> </div>
