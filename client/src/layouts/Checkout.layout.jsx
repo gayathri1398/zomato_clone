@@ -5,10 +5,14 @@ import CheckoutNavbar from '../components/Navbar/checkout';
 
 const Checkoutlayout = (props) => {
     return (
+        <>
+      
         <div className="lg:px-40">
-            <CheckoutNavbar/>
-            {props.children}
+        <CheckoutNavbar/>  
         </div>
+        <hr /> 
+        {props.children}
+        </>
     )
 }
 
