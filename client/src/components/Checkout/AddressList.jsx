@@ -4,7 +4,7 @@ import { RadioGroup } from '@headlessui/react'
 
 
 export default function AddressList(props) {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState("");
 
   return (
     <div className="w-full px-4 py-8">

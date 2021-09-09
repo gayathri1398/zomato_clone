@@ -20,13 +20,13 @@ const CartSm =({Dropup})=>{
     </div>
     </>
 }
-const CartLg =({Dropup,changeIconup})=>{
+const CartLg =({Dropup})=>{
    
      return<>
     <div className="hidden md:flex fixed w-full z-30 text-gray-400 bg-white bottom-0 justify-between items-center px-2 py-1 lg:px-52">
         <div className="flex flex-col">
         <h1 className="flex items-center text-black text-lg font-base">
-            <span className="text-lg border p-1" onClick={Dropup } >{changeIconup?<IoMdArrowDropdown/>:<IoMdArrowDropup/>}</span>
+            <span className="text-lg border p-1" onClick={Dropup } ><IoMdArrowDropup/></span>
             Your Order (1)</h1>
         </div>
      
@@ -53,7 +53,7 @@ const CartContainer = () => {
    <>
         <div>
       {
-          isCartDropup &&  icon && (
+          isCartDropup &&  (
             <div className="bg-white fixed bottom-0 w-full  lg:px-52 ">
             <div className="flex items-center justify-between px-2 ">
                     <h1 className="text-lg font-semibold py-2">Your Orders</h1>
