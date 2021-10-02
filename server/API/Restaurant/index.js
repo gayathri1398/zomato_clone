@@ -17,9 +17,7 @@ Des            Get all the restaurant based on a city
 Params         none
 Access         Public
 Method         GET
-
 */
-
 
 Router.get("/", async(req,res)=>{
     try {
@@ -81,5 +79,45 @@ Router.get("/search", async(req,res)=>{
    
 
 });
+
+/*
+Route        /
+Des          Post the restaurant details
+Params       new
+Access       Private
+Method       POST
+
+*/
+
+Router.post("/new", async(req,res)=>{
+    try {
+        const newRestaurant = await RestaurantModel.create(req.body.restaurantData);
+        return res.json({restaurants: newRestaurant});
+    } catch (error) {
+        return res.status(500).json({error:error.message});
+    }
+});
+
+
+/*
+Route            /
+Des             Update the restaurant objects
+Params          update
+Access          Private
+Method          PATCH
+*/
+
+Router.patch("/update", async(req,res)=>{
+    const updatedRestaurant = await RestaurantModel.findByIdAndUpdate(
+        req.body.restaurantData._id,
+        {$set: req.body.restaurantData},
+        {new:true});
+    if (!updatedRestaurant){
+        return res.status(400).json({restaurants: "No Restaurant found!!"});
+    }
+    return res.json ({restaurant:updatedRestaurant })
+})
+
+
 
 export default Router;
