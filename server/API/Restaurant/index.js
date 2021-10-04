@@ -89,7 +89,7 @@ Method       POST
 
 */
 
-Router.post("/new", async(req,res)=>{
+Router.post("/new",passport.authenticate("jwt"), async(req,res)=>{
     try {
         const newRestaurant = await RestaurantModel.create(req.body.restaurantData);
         return res.json({restaurants: newRestaurant});

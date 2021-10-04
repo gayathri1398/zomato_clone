@@ -57,5 +57,23 @@ Router.get("/c/:category", async(req,res)=>{
 
 });
 
+/*
+Router            /
+Des               post a food
+Params            new
+Access            private
+Method            POST
+*/
+
+Router.post("/new", passport.authenticate("jwt") ,async(req,res)=>{
+    try {
+        const {foodData} = req.body;
+        const createdNewFood = await FoodModel.create(foodData);
+        return res.json({foods:createdNewFood})
+    } catch (error) {
+        return res.status(500).json({error:error.message});
+    }
+});
+
 
 export default Router;

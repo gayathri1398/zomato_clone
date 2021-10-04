@@ -9,7 +9,6 @@ import { ValidateMenuId,ValidateImageId } from '../../Validation/menu';
 
 // DatabaseModels
 import { ImageModel } from '../../database/image';
-
 import { MenuModel } from '../../database/menu';
 
 
@@ -35,6 +34,7 @@ Router.get ("/list/:_id", async(req,res)=>{
     }
 });
 
+
 /*
 Route              /image
 Des                get  the menu images based on id
@@ -53,4 +53,33 @@ Router.get("/image/:_id", async(req,res)=>{
     }
 });
 
+/*
+Route                /
+Des                  Add a new menu
+Params               new
+Access               Private
+Method               POST
+*/
+
+Router.post("/new",async(req,res)=>{
+   try {
+       const {menuData} = req.body;
+       if (menuData._id){
+           const updatedMenu = await MenuModel.findByIdAndUpdate(
+               menuData._id,
+               {$push:{
+                   menus :{$each: menuData.menus}
+                }
+            },
+            {new:true}
+            )
+       };
+       const createNewMenu = await MenuModel.create(menuData);
+       return res.json({menu:createNewMenu} );
+   } catch (error) {
+       return res.status(500).json({error:error.message});
+   }
+});
+
 export default Router;
+
