@@ -7,7 +7,7 @@ export const getRestaurant =()=>async(dispatch)=>{                           // 
    try {
        const restaurantList = await axios ({
            method:"GET",
-           url:"http://localhost:4000/restaurant"
+           url:"http://localhost:4000/restaurant?city=ooty"
        });
        return dispatch({type: GET_RESTAURANT, payload:restaurantList.data})
        

@@ -5,7 +5,7 @@ const INITIAL_STATE = {
    restaurants :[]
 };
 
-const restaurantReducer =(state=[INITIAL_STATE],action)=>{
+const restaurantReducer =(state= INITIAL_STATE, action)=>{
     switch (action.type){
         case GET_RESTAURANT:
             return {

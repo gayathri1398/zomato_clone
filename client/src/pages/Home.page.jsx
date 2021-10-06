@@ -19,7 +19,7 @@ const HomePage = () => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-       dispatch( getRestaurant());
+       dispatch(getRestaurant());
     }, [])
 
     
@@ -29,9 +29,7 @@ const HomePage = () => {
     {type==="night" && <NightLife/>}
     {type==="nutri" && <Nutrition/>}
     </>
-    
- 
-    
+  
 }
 
 export default HomePage;

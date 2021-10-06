@@ -1,51 +1,32 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
+import {useSelector} from 'react-redux'
 
 // components
 import DeliveryCarousel from "./DeliveryCarousel";
 import RestaurantCard from '../RestaurantCard';
 
 const DeliveryPage = () => {
-    const [restaurant, setrestaurant] = useState([
-        {
-            _id:12345,
-            photos:["https://b.zmtcdn.com/data/pictures/chains/4/18386174/619f04006ec03478682c3482403639b0_featured_v2.jpg?output-format=webp"] ,
-            isPro :true,
-            isOff:80,
-            name:"ibaco",
-            durationOfDelivery:44,
-            cuisions:["Desserts"],
-            averageCost:100
-        },
-        {
-            _id:12345-2,
-            photos:["https://b.zmtcdn.com/data/pictures/chains/9/68869/fe19a169fed805b14bf2bafdf162c531_o2_featured_v2.jpg?output-format=webp"] ,
-            isPro :false,
-            isOff:80,
-            name:"Loiee Mithai & Rasoi",
-            durationOfDelivery:34,
-            cuisions:["North Indian, Street Food, Fast Food, Chinese, Mithai, Ice Cream, Beverages"],
-            averageCost:100
-        },
-        {
-            _id:12345-2,
-            photos:["https://b.zmtcdn.com/data/pictures/chains/9/68869/fe19a169fed805b14bf2bafdf162c531_o2_featured_v2.jpg?output-format=webp"] ,
-            isPro :false,
-            isOff:80,
-            name:"Loiee Mithai & Rasoi",
-            durationOfDelivery:34,
-            cuisions:["North Indian, Street Food, Fast Food, Chinese, Mithai, Ice Cream, Beverages"],
-            averageCost:100
-        }
-    ]);
+  
+    const [restaurantList, setrestaurantList] = useState([]);
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.restaurants
+        );
+    console.log(reduxState.restaurants);
+    
+    
+    useEffect(() => {
+        reduxState.restaurants && setrestaurantList(reduxState.restaurants)
+    },[reduxState.restaurants])
+        
     return <>
     
         <div className="lg:px-52">
-        <h1 className="text-gray-800 text-2xl my-6 lg:font-normal text-xl md:text-3xl m-3 px-2 lg:my-6 lg:text-4xl ">Inspiration for your first order</h1>
+        <h1 className="text-gray-800 text-2xl my-6 lg:font-normal text-xl md:text-3xl m-3 px-2 lg:my-6 lg:text-4xl">Inspiration for your first order</h1>
         <DeliveryCarousel/>
-        <h1 className="text-gray-800 text-2xl my-6 lg:font-normal text-xl md:text-3xl m-3 px-2 lg:my-6 lg:text-4xl  ">Sholinganallur Restaurants, Chennai</h1>
+        <h1 className="text-gray-800 text-2xl my-6 lg:font-normal text-xl md:text-3xl m-3 px-2 lg:my-6 lg:text-4xl">Sholinganallur Restaurants, Chennai</h1>
        <div className="w-full md:flex flex-wrap justify-evenly">  
-           {restaurant.map((restaurant)=>(
-                 <RestaurantCard{...restaurant}
+           {restaurantList.map((restaurant)=>(
+                 <RestaurantCard{...restaurantList}
                   key={restaurant._id}
                  />
            ))}

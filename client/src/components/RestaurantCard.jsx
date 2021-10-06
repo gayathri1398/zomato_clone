@@ -7,7 +7,7 @@ const RestaurantCard = (props) => {
        
         <div className="relative" >     
             <div className="w-full h-48 p-2 md:h-52 lg:w-80 lg:h-60" >
-                <img src={props.photos.length && props.photos[0]} 
+                <img src={ props.photos} 
                 alt="Food"
                 className="w-full h-full object-cover rounded-t-2xl lg:rounded-2xl" />
             </div>
@@ -26,7 +26,7 @@ const RestaurantCard = (props) => {
        <div className="flex justify-between my-1 mx-2 p-1">
        <div className="flex flex-col">
             <h1 className="text-base">{props.name}</h1>
-            <p className="text-sm text-gray-500">{props.cuisions.join(", ")}</p>
+            <p className="text-sm text-gray-500">{props.cuisions}</p>
         </div>
         <div className="flex flex-col items-end">
             <span className="bg-green-500 text-white flex w-9 text-sm items-center justify-center rounded">{props.restaurantReviewValue}<AiTwotoneStar className="text-sm"/></span>

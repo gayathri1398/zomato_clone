@@ -89,7 +89,7 @@ Method       POST
 
 */
 
-Router.post("/new",passport.authenticate("jwt"), async(req,res)=>{
+Router.post("/new", async(req,res)=>{
     try {
         const newRestaurant = await RestaurantModel.create(req.body.restaurantData);
         return res.json({restaurants: newRestaurant});
@@ -116,7 +116,7 @@ Router.patch("/update", async(req,res)=>{
         return res.status(400).json({restaurants: "No Restaurant found!!"});
     }
     return res.json ({restaurant:updatedRestaurant })
-})
+});
 
 
 
