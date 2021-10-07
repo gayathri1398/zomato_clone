@@ -19,18 +19,7 @@ const DeliveryPage = () => {
         //     averageCost:"160",
         //     cuisions:["burger","pizza"]
         // },
-        // {
-        //     _id:"123",
-        //     photoss:["https://b.zmtcdn.com/data/pictures/chains/8/65528/6500ebf7d8c9769dbc611e4c524bea3d_o2_featured_v2.jpg?output-format=webp",
-        // "https://b.zmtcdn.com/data/pictures/chains/8/65528/6500ebf7d8c9769dbc611e4c524bea3d_o2_featured_v2.jpg?output-format=webp"],
-        //     isPro:true,
-        //     isOFF:"80",
-        //     durationOfDelivery:"55",
-        //     name:"Pizza hut",
-        //     averageCost:"160",
-        //     cuisions:["burger","pizza"]
-        // },
-  
+        //
 
     ]);
     const reduxState = useSelector(
