@@ -1,13 +1,35 @@
-import React from 'react';
-import {AiTwotoneStar} from 'react-icons/ai'
+import React ,{useEffect, useState}from 'react';
+import {AiTwotoneStar} from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+
+
+
+// actions
+import { getImage } from '../Redux/Reducer/Image/image.action';
+
+
 
 const RestaurantCard = (props) => {
+    const [image,setImage] = useState({
+        images:[]
+      
+    });
+   console.log(image)
+     const dispatch = useDispatch();
+
+    
+
+     useEffect(()=>{
+        props.photos && 
+        dispatch(getImage(props.photos)).then((data)=> setImage(data.payload.image.image))
+     },[props.photos]);
+     
     return<>
      <div className="mb-2 m-4 bg-white rounded-2xl shadow-lg md:w-5/12 lg:shadow-none lg:w-80 hover:shadow-lg transition duration-700 ease-in-out mb-40">
        
         <div className="relative" >     
             <div className="w-full h-48 p-2 md:h-52 lg:w-80 lg:h-60" >
-                <img src={props.photos.length && props.photos[0]} 
+                <img src={image.length && image[0].location}       //image - useState
                 alt="Food"
                 className="w-full h-full object-cover rounded-t-2xl lg:rounded-2xl" />
             </div>

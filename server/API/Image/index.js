@@ -19,6 +19,29 @@ const upload = multer({storage});
 
 // Routes
 /*
+Route          /
+Des            get the image
+Params         id
+Method         GET
+Access         public
+*/
+
+Router.get("/:_id", async(req,res)=>{
+   try {
+      const image = await ImageModel.findById(req.params._id);
+       return res.json({image});
+
+   } catch (error) {
+     return res.status(500).json({error:error.message});
+   }
+
+});
+
+
+
+
+
+/*
 Route           /
 Des             upload to S3 bucket and saves files the link to mongo db
 Params          none

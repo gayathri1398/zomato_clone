@@ -4,13 +4,13 @@ import axios from "axios";
 // types
 import { GET_IMAGE } from "./image.type";
 
-export const getImages =()=>async(dispatch)=>{
+export const getImage =(_id)=>async(dispatch)=>{
     try {
-       const images = await axios ({
+       const Image = await axios ({
          method:"GET",
-         url:"http://localhost:4000/image"
+         url:`http://localhost:4000/image/${_id}`
         })
-        return dispatch({type:GET_IMAGE,payload:images.data});
+        return dispatch({type:GET_IMAGE,payload:Image.data});
     } catch (error) {
         return dispatch ({type:"ERROR",payload:error});
     }

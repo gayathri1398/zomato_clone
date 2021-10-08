@@ -1,7 +1,7 @@
 import { GET_IMAGE } from "./image.type";
 
 const INITIAL_STATE= {
-    images:[]
+    Image:[]
 };
 
 
@@ -10,8 +10,8 @@ const imageReducer =(state =INITIAL_STATE,action )=>{
     case GET_IMAGE:
         return {
             ...state,
-            images:action.payload
-        }
+            Image:action.payload
+        };
     default:
         return {
            ...state
