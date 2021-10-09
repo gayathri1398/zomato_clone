@@ -68,7 +68,7 @@ const Overviewpage = () => {
             <div className="flex items-center justify-between">
             <h1 className="text-xl ">Menu</h1>
             <Link to={`/restaurant/${id}/menu`}>
-          <p className="text-sm flex gap-1 items-center text-zomato-400 pr-4">See all menus
+            <p className="text-sm flex gap-1 items-center text-zomato-400 pr-4">See all menus
             <IoMdArrowDropright className="text-xl"/>
             </p></Link>
             </div>

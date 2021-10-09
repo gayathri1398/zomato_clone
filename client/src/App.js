@@ -15,7 +15,7 @@ import ReviewPage from "./pages/Restaurant/ReviewPage";
 import Menupage from "./pages/Restaurant/Menu.page";
 import PhotosPage from "./pages/Restaurant/Photos.page";
 import Checkoutpage from "./pages/Checkout.page";
-
+import RedirectRestaurant from "./pages/Restaurant/Redirect"
 
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
   <Route path="/" exact >
      <Redirect to="/delivery"/>
   </Route>
-  <Route path="/restaurant/:id" exact>
-    <Redirect to={`/restaurant/${id}/overview`}/>
-  </Route>
+  <Route path="/restaurant/:id" exact component={RedirectRestaurant}/>
+    {/* <Redirect to={`/restaurant/${id}/overview`}/>
+  </Route> */}
       {/* <HomeHocLayout path="/" exact component={Temp}/> */}
       <HomeHocLayout path="/:type" exact component={HomePage}/>
       <RestaurantHocLayout path="/restaurant/:id" exact component={Temp}/>

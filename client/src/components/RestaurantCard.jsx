@@ -1,4 +1,5 @@
 import React ,{useEffect, useState}from 'react';
+import {Link} from 'react-router-dom'
 import {AiTwotoneStar} from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 
@@ -24,7 +25,8 @@ const RestaurantCard = (props) => {
         dispatch(getImage(props.photos)).then((data)=> setImage(data.payload.image.image))
      },[props.photos]);
      
-    return<>
+    return(
+    <Link to={`/restaurant/${props._id}`}>
      <div className="mb-2 m-4 bg-white rounded-2xl shadow-lg md:w-5/12 lg:shadow-none lg:w-80 hover:shadow-lg transition duration-700 ease-in-out mb-40">
        
         <div className="relative" >     
@@ -56,7 +58,8 @@ const RestaurantCard = (props) => {
         </div>
        </div>
         </div>
-    </>
+    </Link>
+    )
 }
 
 export default RestaurantCard;
