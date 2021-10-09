@@ -1,10 +1,12 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {MdStarBorder} from 'react-icons/md';
 import {RiDirectionLine,RiShareForwardLine} from 'react-icons/ri';
 import {BiBookmarkPlus} from 'react-icons/bi';
+import {useDispatch} from 'react-redux';
+import {useParams} from 'react-router-dom'
 
-
-
+// actions
+import {getSpecificRestaurant} from '../Redux/Reducer/Restaurant/restaurant.action'
 
 // components
 import Navbar from '../components/Navbar/restaurant';
@@ -18,6 +20,16 @@ import CartContainer from '../components/Cart/CartContainer';
 
 
 const Restaurantlayout = (props) => {
+    const [restaurant,setRestaurant] = useState({
+        name:"",restaurantRating:"",deliveryRating:"",cuisions:"",address:"",restaurantTiming:""
+    });
+    const dispatch = useDispatch();
+    const {id} = useParams();
+
+    useEffect(() => {
+       dispatch(getSpecificRestaurant(id)).then((data)=>setRestaurant(data.payload.restaurant))
+    }, [])
+
     return (
         <>
         <div className="container mx auto lg:px-52 ">
@@ -27,7 +39,16 @@ const Restaurantlayout = (props) => {
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*"]} />
-           <div className="px-2 "> <Restaurantinfo/>
+         
+           <div className="px-2 "> 
+                <Restaurantinfo name="Pizza Hut"
+                restaurantRating="4"
+                deliveryRating="6"
+                cuisions="Italian,indian"
+                address="karapakkam,chennai"
+                restaurantTiming="10am-10pm"
+                />
+
            <div className="my-4 flex flex-wrap gap-3 ">
            <InfoButtons isActive>
              <MdStarBorder/> Add Review
