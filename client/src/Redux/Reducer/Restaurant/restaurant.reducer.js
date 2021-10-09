@@ -1,9 +1,9 @@
-import { GET_RESTAURANT, GET_SPECIFICRESTAURANT } from "./restaurant.type";
+import { GET_RESTAURANT, GET_SPECIFIC_RESTAURANT } from "./restaurant.type";
 
 
 const INITIAL_STATE = {
    restaurants :[],
-   specificRestaurant:{}
+   selectedRestaurant:{}
 };
 
 const restaurantReducer =(state= INITIAL_STATE, action)=>{
@@ -13,10 +13,10 @@ const restaurantReducer =(state= INITIAL_STATE, action)=>{
                 ...state,
                 restaurants:action.payload,
             }
-        case GET_SPECIFICRESTAURANT:
+        case GET_SPECIFIC_RESTAURANT:
             return {
                 ...state,
-                specificRestaurant:action.payload
+                selectedRestaurant:action.payload
             }
         default:
             return{
