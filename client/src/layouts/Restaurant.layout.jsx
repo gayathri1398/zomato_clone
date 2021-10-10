@@ -16,12 +16,12 @@ import CartContainer from '../components/Cart/CartContainer';
 
 // actions
 import {getSpecificRestaurant} from '../Redux/Reducer/Restaurant/restaurant.action'
-
+import {getImage} from '../Redux/Reducer/Image/image.action'
 
 
 const Restaurantlayout = (props) => {
     const [restaurant,setRestaurant] = useState({
-        images:[],
+        image:[],
         name:"",
         restaurantRating:"",
         deliveryRating:"",
@@ -33,19 +33,31 @@ const Restaurantlayout = (props) => {
     const {id} = useParams();
 
     useEffect(() => {
-       dispatch(getSpecificRestaurant(id)).then((data)=>setRestaurant(data.payload.restaurant))
-    }, [])
+       dispatch(getSpecificRestaurant(id)).then((data)=>{
+           setRestaurant((prev)=>({
+               ...prev,
+               ...data.payload.restaurant
+            }));
+            dispatch(getImage(data.payload.restaurant.photos)).then((data)=>{
+                setRestaurant((prev)=>({
+                    ...prev,
+                    ...data.payload.image.image}))})       //inside the specific action
+       });
+
+    },[])
+
+    
 
     return (
         <>
         <div className="container mx auto lg:px-52 ">
             <Navbar/>
-            <Restaurantgrid image={["https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
+            {/* <Restaurantgrid image={["https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
-        "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*"]} />
-         
+        "https://b.zmtcdn.com/data/pictures/0/70150/3a2331f215d476d402ffcea7569a1707.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*"]} /> */}
+         <Restaurantgrid image={restaurant?.image}/>
            <div className="px-2 "> 
                 <Restaurantinfo name={restaurant?.name}
                 restaurantRating={restaurant?.restaurantRating||0}
