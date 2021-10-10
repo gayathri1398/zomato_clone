@@ -50,27 +50,29 @@ Method          POST
 
 */
 
-Router.post("/", upload.single("file") ,async (req,res)=>{
+Router.post("/", upload.single("file") ,async (req,res,next)=>{
   try {
   
-     const file = req.file;
+    const file = req.file;
+     
      
       // s3 bucket options
-      const bucketOptions ={
+     
+       const bucketOptions ={
           Bucket : "zomatoimagecontainer",
           Key : file.originalname,
           Body : file.buffer,
           ContentType : file.mimetype,
           ACL : "public-read",  //access control list
         
-      };
-
+        };
+    
     
       const uploadImage = await s3Upload(bucketOptions);
       await ImageModel.create({image:[{location:uploadImage.Location}]});
       return res.status(200).json({uploadImage});
       
-      
+    
   } catch (error) {
       return res.status(500).json({error:error.message })
   }

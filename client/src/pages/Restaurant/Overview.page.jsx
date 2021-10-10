@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react';
+import {useDispatch,useSelector} from 'react-redux'
 import Slider from 'react-slick';
 import ReactStars from "react-rating-stars-component";
 import {IoMdArrowDropright} from 'react-icons/io';
@@ -15,9 +16,16 @@ import {MenuSimilarRestaurant} from '../../components/Restaurant/MenuSimilarRest
 import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
 import MapView from '../../components/Restaurant/MapView';
 
+// action
+import {getImage} from '../../Redux/Reducer/Image/image.action';
+
 
 const Overviewpage = () => {
+  const [menuImages,setMenuImages] = useState({images:[]})
+
   const {id} = useParams();
+  const dispatch = useDispatch();
+
     const settings = {
         arrows:true,
         infinite: true,
@@ -59,6 +67,20 @@ const Overviewpage = () => {
       const ratingChanged = (newRating) => {
         console.log(newRating);
       };
+
+      const reduxState = useSelector(globalStore => globalStore.restaurant.selectedRestaurant.restaurant);
+
+      useEffect(() => {
+      if(reduxState){
+       dispatch(getImage(reduxState?.menuImages)).then((data)=> { 
+        const images=[];
+        data.payload.image.image.map(({location})=>images.push(location));
+        setMenuImages(images);
+      
+      });
+      
+      }
+      }, [])
     return (
         <div className="px-2 lg:px-52 flex flex-col md:flex-row my-2">
            
@@ -74,20 +96,23 @@ const Overviewpage = () => {
             </div>
            
                 <MenuCollection menuTitle="Menu"
-                pages="3 "
-                 images={["https://b.zmtcdn.com/data/menus/852/19247852/70d8b5aa09a0fe71347c3983da946b01.jpg?",
-                "https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg",
-                "https://b.zmtcdn.com/data/menus/852/19247852/a1bedce76437d20bc6ae363092f15c7b.jpg"]}/>
+                pages={menuImages.length}
+                 images={console.log(menuImages.images)}/>
+                
             </div>
               <h1 className="text-xl pb-2">Cuisines</h1>  
               <div className="flex items-center gap-2 mb-4" >
-                  <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p>
-                  <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p>
-                  <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p>
+                {reduxState?.cuisions.map((data)=>(
+                        <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">{data}</p>
+                ))}
+                 
+                  {/* <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p>
+                  <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p> */}
                   </div>                                    
                 <div>
+                 
                     <h1 className="text-xl pb-2">Average Cost</h1>
-                    <p className="text-base">₹300 for two people (approx.)</p>
+                    <p className="text-base">₹{reduxState?.averageCost} for two people (approx.)</p>
                     <p className="text-gray-400">Exclusive of applicable taxes and charges, if any</p>
                 </div>
               
