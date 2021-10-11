@@ -81,6 +81,13 @@ const Overviewpage = () => {
       
       }
       }, [])
+     
+      const getLatLong = (mapAddress)=>{
+        reduxState?.mapAddress?.map((item)=>parseFloat(item))
+      }
+      
+    
+
     return (
         <div className="px-2 lg:px-52 flex flex-col md:flex-row my-2">
            
@@ -97,7 +104,7 @@ const Overviewpage = () => {
            
                 <MenuCollection menuTitle="Menu"
                 pages={menuImages.length}
-                 images={console.log(menuImages.images)}/>
+                 images={menuImages}/>
                 
             </div>
               <h1 className="text-xl pb-2">Cuisines</h1>  
@@ -105,9 +112,7 @@ const Overviewpage = () => {
                 {reduxState?.cuisions.map((data)=>(
                         <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">{data}</p>
                 ))}
-                 
-                  {/* <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p>
-                  <p className="border border-gray-400 text-blue-500 rounded-full p-1 ">Sandwich</p> */}
+                
                   </div>                                    
                 <div>
                  
@@ -140,9 +145,10 @@ const Overviewpage = () => {
                />
              </div>
              <div className="md:hidden">
-               <MapView phno="+91233445357"
-               address=" 5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai"
-               mapLocation={[13.14564418191485, 80.18286445453698] }/>
+               <MapView title={reduxState?.name}
+               phno={`+91${reduxState?.contactNumber}`}
+               mapLocation={reduxState?.mapLocation.split(",").map((item)=>parseFloat(item))}
+               address={reduxState?.address}/>
              </div>
              <ReviewCard/>
              <ReviewCard/>
@@ -151,9 +157,13 @@ const Overviewpage = () => {
               </div>
             
             <aside className="hidden md:block w-5/12">
-            <MapView phno="+91233445357"
-               address=" 5/337, Rajiv Gandhi Salai, St. Thomas Mount Block 195, Okkiyampet, Chennai"
-               mapLocation={[13.14564418191485, 80.18286445453698] }/>
+            <MapView title={reduxState?.name}
+              phno={`+91${reduxState?.contactNumber}`}
+              mapLocation={reduxState?.mapLocation.split(",").map((item)=>parseFloat(item))}
+              address={reduxState?.address}
+              
+              
+               />
             </aside>
         
             

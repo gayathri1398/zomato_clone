@@ -24,7 +24,7 @@ const MapView = (props) => {
           />
           <Marker position={props.mapLocation}>
             <Popup>
-            Hello welcome!
+            {props.title}
             </Popup>
           </Marker>
         </MapContainer>
