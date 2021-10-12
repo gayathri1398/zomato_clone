@@ -6,7 +6,7 @@ import { UserModel } from "../database/allmodels";
 
 
 // Strategy
-const JwtStrategy = JwtPassport.Strategy;
+const JWTStrategy = JwtPassport.Strategy;
 const ExtractJwt = JwtPassport.ExtractJwt;
 
 // options
@@ -17,14 +17,14 @@ const options = {
 
 export default (passport)=>{
   passport.use(
-      new JwtStrategy(options, async(jwt__payload, done)=>{
+      new JWTStrategy(options, async(jwt__payload, done)=>{
           try {
-              const doestUserExists = await UserModel.findById(jwt__payload.user);
-              if (!doestUserExists) return (null, false);
+              const doesUserExists = await UserModel.findById(jwt__payload.user);
+              if (!doesUserExists) return done(null, false);
 
-              return(done, doestUserExists);
+              return done(null, doesUserExists);
           } catch (error) {
-             throw Error(error) 
+             throw new Error(error) 
           };
       })
   )
