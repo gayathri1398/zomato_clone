@@ -1,13 +1,7 @@
 import React from 'react';
-import {TiStar} from 'react-icons/ti'
-
-
-
+import {TiStar} from 'react-icons/ti';
 
 const ReviewCard = (props) => {
- 
-
-   
 
     return (
         <>

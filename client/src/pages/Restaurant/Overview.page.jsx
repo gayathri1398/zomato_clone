@@ -18,10 +18,13 @@ import MapView from '../../components/Restaurant/MapView';
 
 // action
 import {getImage} from '../../Redux/Reducer/Image/image.action';
+import { getReviews } from '../../Redux/Reducer/Review/review.action';
+
 
 
 const Overviewpage = () => {
-  const [menuImages,setMenuImages] = useState({images:[]})
+  const [menuImages,setMenuImages] = useState({images:[]});
+  const [reviews,setreviews] = useState([]);
 
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -64,23 +67,27 @@ const Overviewpage = () => {
           }
         ]
       };
+      const reduxState = useSelector(globalStore => globalStore.restaurant.selectedRestaurant.restaurant);
+    
+      useEffect(() => {
+      if(reduxState){
+       dispatch(getImage(reduxState?.menuImages)).then((data)=> { 
+            const images=[];
+            data.payload.image.image.map(({location})=>images.push(location));
+            setMenuImages(images);
+            console.log(images);
+        });
+
+       dispatch(getReviews(reduxState?._id)).then((data)=>setreviews(data.payload.reviews))
+      }
+      }, []);
+
+
       const ratingChanged = (newRating) => {
         console.log(newRating);
       };
 
-      const reduxState = useSelector(globalStore => globalStore.restaurant.selectedRestaurant.restaurant);
-
-      useEffect(() => {
-      if(reduxState){
-       dispatch(getImage(reduxState?.menuImages)).then((data)=> { 
-        const images=[];
-        data.payload.image.image.map(({location})=>images.push(location));
-        setMenuImages(images);
-      
-      });
-      
-      }
-      }, [])
+  
      
       const getLatLong = (mapAddress)=>{
         reduxState?.mapAddress?.map((item)=>parseFloat(item))
@@ -150,10 +157,10 @@ const Overviewpage = () => {
                mapLocation={reduxState?.mapLocation.split(",").map((item)=>parseFloat(item))}
                address={reduxState?.address}/>
              </div>
-             <ReviewCard/>
-             <ReviewCard/>
-             <ReviewCard/>
-             <ReviewCard/>
+
+             {reviews.map((reviewData)=> 
+                  <ReviewCard {...reviewData}/>)}
+            
               </div>
             
             <aside className="hidden md:block w-5/12">
@@ -161,8 +168,6 @@ const Overviewpage = () => {
               phno={`+91${reduxState?.contactNumber}`}
               mapLocation={reduxState?.mapLocation.split(",").map((item)=>parseFloat(item))}
               address={reduxState?.address}
-              
-              
                />
             </aside>
         
