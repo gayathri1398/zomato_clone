@@ -15,20 +15,39 @@ const Router = express.Router();
 //Routes
 /*
 Route            /
-Des             get the user details through userId
+Des             get the user of own
 Params          _id
-Access         Public
+Access         private
 Method         GET
 
 */
 Router.get("/",passport.authenticate("jwt"),async(req,res)=>{
     try {
-        const {email,phoneNumber,fullname,address} =req.session.passport.user._doc;
+        const {email,phoneNumber,fullname,address} = req.session.passport.user._doc;       // passport provides session(console.log(passport.session))=>we will get user._doc[object]
         return res.json({user:{email,phoneNumber,fullname,address}});
     } catch (error) {
         return res.status(500).json({error:error.message})
     }
 })
+
+/*
+Router             /
+Des                get the user details
+Params             _id
+Access            private
+Method            GET
+*/
+Router.get("/:_id", async(req,res)=>{
+   try {
+        const user = await UserModel.findById(req.params._id);
+        const {fullname} = user;
+        return res.json({user: {fullname}});
+   } catch (error) {
+       return res.status(500).json({error:error.message});
+   }
+})
+
+
 // Router.get("/:_id",passport.authenticate("jwt"), async(req,res)=>{
 //     try {
 //         await ValidateUserId(req.params)

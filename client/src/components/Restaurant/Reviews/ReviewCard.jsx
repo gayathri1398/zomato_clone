@@ -1,7 +1,21 @@
-import React from 'react';
+import React ,{useState,useEffect} from 'react';
 import {TiStar} from 'react-icons/ti';
+import {useDispatch} from 'react-redux';
+import dayjs from 'dayjs';
+
+// actions
+import { getUser } from '../../../Redux/Reducer/User/user.action';
 
 const ReviewCard = (props) => {
+    const [user,setUser] = useState("")
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+       dispatch(getUser(props.user)).then(data=>
+        //  setUser(data.payload.user.user.user)
+         console.log(data))
+    }, [])
+
 
     return (
         <>
@@ -14,7 +28,7 @@ const ReviewCard = (props) => {
                  className="w-full h-full rounded-full" />
             </div>
             <div>
-                <h2 className="font-semibold">Santhosh</h2>
+                <h2 className="font-semibold">{user?.fullname}</h2>
                 <p className="text-gray-400">10 reviews &bull; 0 Followers</p>
             </div>
         </div>
@@ -25,10 +39,10 @@ const ReviewCard = (props) => {
         <div className="flex items-center gap-2 my-2">
             <span className="flex items-center bg-green-400 rounded-lg"><TiStar/>4.1</span>
             <p className="font-light uppercase">{props.isRestaurantReview?"Dining":"Delivery"}</p>
-            <span className="text-gray-400">27 Days ago</span>
+            <span className="text-gray-400">{dayjs(props.createdAt).format("DD-MMM-YYYY")}</span>
         </div>
         <div>
-            <p className="border-b pb-4">chicken is probably undercooked...because we had to throw away one whole leg piece as we saw bloody areas after one bite.</p>
+            <p className="border-b pb-4"> {props.reviewSubject}</p>
 
         </div>
       </>
