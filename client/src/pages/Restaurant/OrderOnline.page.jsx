@@ -11,8 +11,14 @@ import FoodList from '../../components/Restaurant/Order-Online/FoodList';
 // actions
 import { getFoodList } from '../../Redux/Reducer/Food/food.action';
 
+
+
+
+
 const OrderOnlinepage = () => {
     const [menu,setMenu] = useState([]);
+    const [isSelected,setIsSelected] = useState() ;    //we placed this from menulistcontainer bec it doesnt maintain any global state and everything was active when selected
+
     const dispatch = useDispatch();
 
      const reduxState = useSelector((globalStore)=>(globalStore.restaurant.selectedRestaurant.restaurant) );
@@ -23,13 +29,17 @@ const OrderOnlinepage = () => {
       dispatch(getFoodList(reduxState?.menu)).then((data)=> setMenu(data.payload.menus.menus));
     },[reduxState]);
 
+    const onClickHandler=(e)=>{
+      setIsSelected (e.target.id);
+    }
+
    console.log({state:menu})
     return (
         <div className="px-2 w-full lg:px-52 flex">
           <aside className="hidden md:block w-1/4 h-screen">  
             {
               menu?.map((item)=>(
-              <MenuListContainer {...item} key={item._id} />
+              <MenuListContainer {...item} key={item._id} onClickHandler={onClickHandler} isSelected={isSelected} />
               ))
             }
            
@@ -46,9 +56,10 @@ const OrderOnlinepage = () => {
               
                <section>
             {menu.map((item)=>{
-                 <FoodList key={item._id} {...item} />
+                 <FoodList {...item} key={item._id}  />
+                
             })}
-               
+             
                </section>
           </div>
         </div>
