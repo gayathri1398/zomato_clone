@@ -6,7 +6,6 @@ import {IoMdTime} from 'react-icons/io'
 // components
 import MenuListContainer from '../../components/Restaurant/Order-Online/MenuListContainer';
 import FloatMenuButton from '../../components/Restaurant/Order-Online/FloatMenuButton';
-import FoodItem from '../../components/Restaurant/Order-Online/FoodItem';
 import FoodList from '../../components/Restaurant/Order-Online/FoodList';
 
 // actions
@@ -22,12 +21,18 @@ const OrderOnlinepage = () => {
     useEffect(()=>{
       reduxState &&
       dispatch(getFoodList(reduxState?.menu)).then((data)=> setMenu(data.payload.menus.menus));
-    },[reduxState])
+    },[reduxState]);
+
    console.log({state:menu})
     return (
         <div className="px-2 w-full lg:px-52 flex">
           <aside className="hidden md:block w-1/4 h-screen">  
-             <MenuListContainer/>
+            {
+              menu?.map((item)=>(
+              <MenuListContainer {...item} key={item._id} />
+              ))
+            }
+           
           </aside>
           <div >
           <FloatMenuButton/>
@@ -43,7 +48,6 @@ const OrderOnlinepage = () => {
             {menu.map((item)=>{
                  <FoodList key={item._id} {...item} />
             })}
-               {console.log({state:menu})}
                
                </section>
           </div>

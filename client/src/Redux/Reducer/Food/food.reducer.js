@@ -12,6 +12,7 @@ const foodReducer=(state=INITIAL_STATE,action)=>{
              ...state,
              foodList:action.payload
          }
+         
       default:
           return {
               ...state
