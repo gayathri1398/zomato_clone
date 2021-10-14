@@ -1,4 +1,5 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
+import {useDispatch,useSelector} from 'react-redux'
 import {AiFillCompass} from 'react-icons/ai';
 import {IoMdTime} from 'react-icons/io'
 
@@ -8,8 +9,21 @@ import FloatMenuButton from '../../components/Restaurant/Order-Online/FloatMenuB
 import FoodItem from '../../components/Restaurant/Order-Online/FoodItem';
 import FoodList from '../../components/Restaurant/Order-Online/FoodList';
 
+// actions
+import { getFoodList } from '../../Redux/Reducer/Food/food.action';
 
 const OrderOnlinepage = () => {
+    const [menu,setMenu] = useState([]);
+    const dispatch = useDispatch();
+
+     const reduxState = useSelector((globalStore)=>(globalStore.restaurant.selectedRestaurant.restaurant) );
+    
+    
+    useEffect(()=>{
+      reduxState &&
+      dispatch(getFoodList(reduxState?.menu)).then((data)=> setMenu(data.payload.menus.menus));
+    },[reduxState])
+   console.log({state:menu})
     return (
         <div className="px-2 w-full lg:px-52 flex">
           <aside className="hidden md:block w-1/4 h-screen">  
@@ -26,73 +40,10 @@ const OrderOnlinepage = () => {
               <span className="flex items-center gap-1 pl-2"><IoMdTime/>45 min</span></div>
               
                <section>
-               <FoodList title="Recommened"
-               items={[
-              { 
-                "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-                "title":"Chicken Maximus Pizza [Medium]",
-               "price":"599",
-               "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-            },
-            { 
-                "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-                "title":"Chicken Maximus Pizza [Medium]",
-               "price":"599",
-               "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-            },
-            { 
-                "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-                "title":"Chicken Maximus Pizza [Medium]",
-               "price":"599",
-               "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-            },
-        ]}/>
-        <FoodList title="pizza"
-        items={[
-       { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
-     { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
-     { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
- ]}/>
- <FoodList title="pizza"
-        items={[
-       { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
-     { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
-     { 
-         "image":"https://b.zmtcdn.com/data/dish_photos/9ef/2cb9a6de4279685609d65345302789ef.jpg?fit=around|130:130&crop=130:130;*,*",  
-         "title":"Chicken Maximus Pizza [Medium]",
-        "price":"599",
-        "descriptio":"Loaded with chicken is just an understatement here! Barbeque Chicken, Sliced Chicken Meatballs, Chicken Sausages & Chicken Kheema along with Black Olives, Onion & Mozzarella Cheese on a soft 11-inch crust."
-     },
- ]}
-               
-               
-               
-               />
+            {menu.map((item)=>{
+                 <FoodList key={item._id} {...item} />
+            })}
+               {console.log({state:menu})}
                
                </section>
           </div>

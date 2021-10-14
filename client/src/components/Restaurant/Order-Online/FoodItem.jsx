@@ -6,12 +6,12 @@ const FoodItem = (props) => {
     return (
         <div className=" w-full flex items-start md:gap-3 justify-between  " >
             <div className="w-24 h-24 md:w-1/5 h-32 rounded-lg p-1">
-                <img src={props.image}
+                <img src={props.photos}
                  alt="Fooditems"
                  className="w-full h-full rounded-lg" />
             </div>
             <div className="flex flex-col w-2/4 md:w-2/3">
-            <h1 className="text-lg font-semibold">{props.title}</h1>
+            <h1 className="text-lg font-semibold">{props.name}</h1>
             <ReactStars
                 count={5}
                 size={20}

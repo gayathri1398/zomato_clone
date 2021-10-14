@@ -16,7 +16,7 @@ export const getFood=(foodId)=>async(dispatch)=>{
   }
 };
 
-export const getFoodList =(menuId)=>async()=>{
+export const getFoodList =(menuId)=>async(dispatch)=>{
     try {
         const Menu = await axios({
             method:"GET",
@@ -25,6 +25,6 @@ export const getFoodList =(menuId)=>async()=>{
         return dispatch({type:GET_FOOD_LIST, payload:Menu.data })
 
     } catch (error) {
-        
+        return dispatch({type:"ERROR", payload:error})
     }
 }

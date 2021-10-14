@@ -78,7 +78,9 @@ const Overviewpage = () => {
             console.log(images);
         });
 
-       dispatch(getReviews(reduxState?._id)).then((data)=>setreviews(data.payload.reviews))
+      //  dispatch(getReviews(reduxState?._id)).then((data)=>
+      //  setreviews(data.payload.reviews)
+      //  )
       }
       }, []);
 
