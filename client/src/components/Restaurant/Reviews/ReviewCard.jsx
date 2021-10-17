@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { getUser } from '../../../Redux/Reducer/User/user.action';
 
 const ReviewCard = (props) => {
-    const [user,setUser] = useState("")
+    const [user,setUser] = useState({})
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -20,7 +20,7 @@ const ReviewCard = (props) => {
     return (
         <>
 
-        <div className="flex items-center justify-between my-4 mr-4">
+        <div className="flex items-center justify-between my-4 mr-4 ">
             <div className="flex gap-2">
             <div className="w-12 h-12 rounded-full bg-blue">
                 <img src="https://b.zmtcdn.com/data/user_profile_pictures/73e/14705d4635fe3a9d8af15a4cb814073e.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A"
@@ -42,11 +42,12 @@ const ReviewCard = (props) => {
             <span className="text-gray-400">{dayjs(props.createdAt).format("DD-MMM-YYYY")}</span>
         </div>
         <div>
-            <p className="border-b pb-4"> {props.reviewSubject}</p>
+            <p className="border-b pb-4">{props.reviewSubject}</p>
 
         </div>
       </>
     )
 }
+
 
 export default ReviewCard;

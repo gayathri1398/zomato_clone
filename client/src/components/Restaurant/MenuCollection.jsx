@@ -24,7 +24,7 @@ const MenuCollection = (props) => {
        <div className="flex flex-col gap-2">
             
               <div className="w-36 h-36 rounded-lg overflow-hidden md:w-60 md:h-60 ">
-                <img src={props.images}
+                <img src={props.images && props.images[0]}
                  alt="menucollection"
                  className="w-full h-full object-cover rounded-lg transform hover:scale-110 trnsition duration-500 ease-out" />
               </div>
