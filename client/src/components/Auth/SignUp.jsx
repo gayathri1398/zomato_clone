@@ -1,13 +1,38 @@
+import {useState} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import {FcGoogle} from 'react-icons/fc';
+import {useDispatch} from 'react-redux';
+
+
+// action
+import { signUp } from '../../Redux/Reducer/Auth/auth.action';
+
 
 export default function SignUp({isOpen,setIsOpen, ...props}) {
+  const [userData, setUserData] =useState({
+    fullname:"",
+    email:"",
+    password:""
+  });
 
+  const dispatch = useDispatch();
+
+  const handleChange = (e)=> setUserData(prev=> ({...prev, [e.target.name]:e.target.value}))
     
   function closeModal() {
     setIsOpen(false)
   }
+  
+  const submit =()=> {
+    setUserData({
+      fullname:"",
+      email:"",
+      password:""
+    });
+    
+    dispatch(signUp(userData))};
+
 
   return (
     <>
@@ -59,15 +84,33 @@ export default function SignUp({isOpen,setIsOpen, ...props}) {
                    <button className="border p-2 flex items-center gap-3 justify-center">SignUp with Google <FcGoogle/></button>
                   <div className="flex flex-col gap-2">
                       <label htmlFor="username" className="text-base">Username</label>
-                      <input type="text" id="username" placeholder="John Doe" className="border p-2 focus:outline-none focus:border-zomato-400 bg-none "/>
+                      <input type="text"
+                       id="username" 
+                       name="fullname"
+                       value={userData.fullname}
+                       onChange={handleChange}
+                       placeholder="John Doe" 
+                       className="border p-2 focus:outline-none focus:border-zomato-400 bg-none "/>
                   </div>
                   <div className="flex flex-col gap-2">
                       <label htmlFor="email" className="text-base">Email</label>
-                      <input type="email" id="email" placeholder="JohnDoe@email.com" className="border p-2 focus:outline-none focus:border-zomato-400 bg-none "/>
+                      <input type="email"
+                       id="email"
+                       name="email"
+                       value={userData.email}
+                       onChange={handleChange} 
+                       placeholder="JohnDoe@email.com"
+                        className="border p-2 focus:outline-none focus:border-zomato-400 bg-none "/>
                   </div>
                   <div className="flex flex-col gap-2">
                       <label htmlFor="password"  className="text-base">Password</label>
-                      <input type="password" id="password" placeholder="******" className="border p-2 focus:outline-none focus:border-zomato-400"/>
+                      <input type="password" 
+                      name="password"
+                      id="password" 
+                      value={userData.password}
+                      onChange={handleChange}
+                      placeholder="******" 
+                      className="border p-2 focus:outline-none focus:border-zomato-400"/>
                   </div>
                 </div>
 
@@ -75,7 +118,7 @@ export default function SignUp({isOpen,setIsOpen, ...props}) {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center px-4 py-2 text-sm font-medium text-white bg-zomato-400 border border-transparent rounded-md hover:bg-white hover:text-zomato-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+                    onClick={submit }
                   >
                   SignUp
                   </button>

@@ -27,6 +27,7 @@ export const signUp =(userData)=>async(dispatch)=>{
             url:`http://localhost:4000/auth/signup`,
             data:{credentials:userData}
         });
+        localStorage.setItem("zomatoUser", JSON.stringify({token: User.data.token}))
         return dispatch({type:SIGN_UP, payload:User.data});
     } catch (error) {
         return dispatch({type:"ERROR",payload:error});

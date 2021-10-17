@@ -8,7 +8,6 @@ import {AiOutlineArrowLeft} from 'react-icons/ai';
 // components
 import SignIn from '../Auth/SignIn';
 import SignUp from '../Auth/SignUp';
-import { signUp } from '../../Redux/Reducer/Auth/auth.action';
 
 const Navsm=({SignIn,SignUp})=>{
     const [isDropDown, setIsDropDown] = useState(false);

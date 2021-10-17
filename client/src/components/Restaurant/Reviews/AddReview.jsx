@@ -10,10 +10,12 @@ const AddReview = () => {
 
     const reviewModal = ()=>{
         if (!localStorage.zomatoUser){
-            return alert("Please Sign In to write a review!");
-            setIsOpen( !isOpen)
-        }
+            return alert("Please Sign In to write a review!");  
+        }else
+          return  setIsOpen( !isOpen);
+         
     }
+    
     return (
         <>
         <ReviewModal isOpen={isOpen} setIsOpen={setIsOpen}/>
