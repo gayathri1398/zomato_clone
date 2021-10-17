@@ -4,7 +4,6 @@ import ReactStars from 'react-rating-stars-component';
 
 export default function ReviewModal({isOpen, setIsOpen, ...props}) {
   
-
   function closeModal() {
     setIsOpen(false)
   }
@@ -15,8 +14,7 @@ export default function ReviewModal({isOpen, setIsOpen, ...props}) {
 
   return (
     <>
-      
-
+    
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"

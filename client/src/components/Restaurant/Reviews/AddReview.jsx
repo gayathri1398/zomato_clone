@@ -8,7 +8,12 @@ import ReviewModal from './ReviewModal';
 const AddReview = () => {
     let [isOpen, setIsOpen] = useState(false)
 
-    const reviewModal = ()=>setIsOpen( !isOpen)
+    const reviewModal = ()=>{
+        if (!localStorage.zomatoUser){
+            return alert("Please Sign In to write a review!");
+            setIsOpen( !isOpen)
+        }
+    }
     return (
         <>
         <ReviewModal isOpen={isOpen} setIsOpen={setIsOpen}/>
