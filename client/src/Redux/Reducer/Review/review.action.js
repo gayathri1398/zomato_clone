@@ -18,7 +18,8 @@ export const postReviews=(reviewData)=>async(dispatch)=>{
     try {
         await axios({
             method:"POST",
-            url:`http://localhost:4000/reviews/new`
+            url:`http://localhost:4000/reviews/new`,
+            data:{reviewData}
         })
         return dispatch({type:POST_REVIEW, payload:reviewData})
     } catch (error) {

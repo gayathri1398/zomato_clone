@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, GET_USER } from './user.type';
+import { SELF, GET_USER } from './user.type';
 
 export const getUser =(_id)=>async(dispatch)=>{
     try {
@@ -21,7 +21,7 @@ export const getmyself =(_id)=>async(dispatch)=>{
             url:`http://localhost:4000/user/${_id}`
         });
         localStorage.setItem("zomato",_id);
-        return dispatch({type:GET_USER, payload:user.data})
+        return dispatch({type:SELF, payload:user.data})
     } catch (error) {
         return dispatch({type:"ERROR", payload:error})
     }

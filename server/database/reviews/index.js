@@ -7,7 +7,7 @@ const ReviewSchema = new mongoose.Schema({
                   ref: "Restaurants"},
     user: {type: mongoose.Types.ObjectId,
         ref: "Users"},
-    rating: {type: Number, required: true},
+    rating: {type: Number},
     reviewSubject: {type: String, required: true},
     photos: [{type: mongoose.Types.ObjectId,
               ref: "Images"}],

@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 
 // validation
-import { ValidateReview ,ValidateReviewId} from '../../Validation/review';
+// import { ValidateReview ,ValidateReviewId} from '../../Validation/review';
 
 // Database Models
 import { ReviewModel } from '../../database/reviews';
@@ -41,7 +41,7 @@ Method          POST
 
 Router.post("/new", passport.authenticate("jwt"), async(req,res)=>{
     try {
-        await ValidateReview(req.body);
+        // await ValidateReview(req.body);
         const {_id} = req.session.passport.user._doc;       // passport provides session(console.log(passport.session))=>we will get user._doc[object]
 
         const {reviewData} = req.body;
@@ -64,7 +64,7 @@ Method           DELETE
 
 Router.delete("/delete:_id", async(req,res)=>{
     try {
-        await ValidateReviewId(req.params);
+        // await ValidateReviewId(req.params);
         const {_id} = req.params;
          await ReviewModel.findByIdAndDelete(_id); 
         return res.status(200).json({reviews: "Successfully deleted the review"});  

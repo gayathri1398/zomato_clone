@@ -11,16 +11,15 @@ const ReviewCard = (props) => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-       dispatch(getUser(props.user)).then(data=>
-        //  setUser(data.payload.user.user.user)
-         console.log(data))
+       dispatch(getUser(props.user)).then(data=> setUser(data.payload.user))
+        
     }, [])
 
 
     return (
         <>
-
-        <div className="flex items-center justify-between my-4 mr-4 ">
+    
+        <div className="flex items-center justify-between my-4 mr-4  ">
             <div className="flex gap-2">
             <div className="w-12 h-12 rounded-full bg-blue">
                 <img src="https://b.zmtcdn.com/data/user_profile_pictures/73e/14705d4635fe3a9d8af15a4cb814073e.jpg?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A"
@@ -45,6 +44,7 @@ const ReviewCard = (props) => {
             <p className="border-b pb-4">{props.reviewSubject}</p>
 
         </div>
+        
       </>
     )
 }
