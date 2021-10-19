@@ -3,7 +3,7 @@ import {MdStarBorder} from 'react-icons/md';
 import {RiDirectionLine,RiShareForwardLine} from 'react-icons/ri';
 import {BiBookmarkPlus} from 'react-icons/bi';
 import {useDispatch} from 'react-redux';
-import {useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom';
 
 
 // components
@@ -13,6 +13,7 @@ import InfoButtons from '../components/Restaurant/InfoButtons';
 import Restaurantinfo from '../components/Restaurant/restaurantinfo';
 import TabsContainer from '../components/Restaurant/Tabs';
 import CartContainer from '../components/Cart/CartContainer';
+
 
 // actions
 import {getSpecificRestaurant} from '../Redux/Reducer/Restaurant/restaurant.action'

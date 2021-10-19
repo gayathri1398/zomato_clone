@@ -56,14 +56,14 @@ const dispatch = useDispatch();
    const submit=()=>{
      
      dispatch(postReviews({...reviewData, restaurant:id}));
-    //  setreviewData({
-    //   reviewSubject: "",
-    //   reviewText:"",
-    //   isFoodReview:false,
-    //   isRestaurantReview:false,
-    //   rating:0,
-    //  });
-    //  closeModal();
+     setreviewData({
+      reviewSubject: "",
+      reviewText:"",
+      isFoodReview:false,
+      isRestaurantReview:false,
+      rating:0,
+     });
+     closeModal();
    }
 
   

@@ -36,7 +36,7 @@ const ReviewCard = (props) => {
         </button>
         </div>
         <div className="flex items-center gap-2 my-2">
-            <span className="flex items-center bg-green-400 rounded-lg"><TiStar/>4.1</span>
+            <span className="flex items-center bg-green-400 rounded-lg px-1"><TiStar/>{props.rating}</span>
             <p className="font-light uppercase">{props.isRestaurantReview?"Dining":"Delivery"}</p>
             <span className="text-gray-400">{dayjs(props.createdAt).format("DD-MMM-YYYY")}</span>
         </div>
