@@ -1,21 +1,42 @@
 
-import React ,{useState}from 'react';
+import React ,{useState,useEffect}from 'react';
 import ImageViewer from 'react-simple-image-viewer';
+import { useDispatch,useSelector } from 'react-redux';
 
 // components
 import PhotoCollection from '../../components/Restaurant/PhotoCollection';
 
+
+// actions
+import { getImage } from '../../Redux/Reducer/Image/image.action';
+
+
+
 const PhotoPage = (props) => {
    
-   const [photos, setPhotos] =useState(["https://b.zmtcdn.com/data/pictures/8/19005048/1194a6dc791af6d1f36d4f8bc1c381e6.jpg?",
-  "https://b.zmtcdn.com/data/pictures/8/19005048/4d083a0c12a30ccc6b2e0bc019c11f4c.jpg?","https://b.zmtcdn.com/data/pictures/8/19005048/1194a6dc791af6d1f36d4f8bc1c381e6.jpg?",
-  "https://b.zmtcdn.com/data/pictures/8/19005048/4d083a0c12a30ccc6b2e0bc019c11f4c.jpg?"]);
+   const [photos, setPhotos] =useState([]);
    
    const [currentImage, setCurrentImage] = useState(0);
    const [isViewerOpen, setIsViewerOpen] = useState(false);
    
    const openImageViewer =()=>setIsViewerOpen(true);
    const closeImageViewer =()=>setIsViewerOpen(false);
+   
+   const dispatch = useDispatch();
+
+
+   const reduxState = useSelector(globalState=> globalState.restaurant.selectedRestaurant.restaurant);
+
+   useEffect(()=>{
+    if(reduxState){
+       dispatch(getImage(reduxState?.photos)).then(data=>{
+         const images=[];
+         data.payload.image.image.map(({location})=> images.push(location))
+         setPhotos(images)})
+    }
+   },[reduxState])
+
+   console.log({state:photos})
 
     return (
         <>
@@ -29,9 +50,9 @@ const PhotoPage = (props) => {
           onClose={ closeImageViewer }
         />
       )}
-          <div className="flex flex-wrap items-center gap-3 px-2 mt-4 lg:px-52 " >
+          <div className="flex flex-wrap items-center gap-8 px-2 mt-4 lg:px-52 mb-16" >
           {photos.map((photo)=>(
-            <PhotoCollection image={photo}
+            <PhotoCollection image={photo} 
             openImageViewer={openImageViewer}
             />
          ))}

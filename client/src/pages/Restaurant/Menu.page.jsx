@@ -25,7 +25,7 @@ const MenuPage = (props) => {
       )
     }
   },[])
-  console.log({menu:menus.length})
+ 
     return (
         <>
           <div className="flex flex-wrap items-center gap-3 px-2 lg:px-52 mb-8">

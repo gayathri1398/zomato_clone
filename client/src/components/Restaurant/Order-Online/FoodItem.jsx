@@ -14,7 +14,7 @@ const FoodItem = (props) => {
     console.log({state:food})
 
     useEffect(()=>{
-        dispatch(getFood()).then((data)=>console.log(data.payload.food))
+        dispatch(getFood()).then((data)=>setFood(data.payload.food))
     },[]);
     console.log({food})
 
