@@ -28,6 +28,11 @@ export default function SignIn({isOpen,setIsOpen, ...props}) {
   function closeModal() {
     setIsOpen(false)
   }
+
+  // fn to signin with google
+   const googleSignin =()=>(window.location.href = "http://localhost:4000/auth/google");   // going outside the location means the nodejs port
+
+
   return (
     <>
      
@@ -70,7 +75,7 @@ export default function SignIn({isOpen,setIsOpen, ...props}) {
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               
                 <div className="mt-2 flex flex-col gap-3">
-                   <button className="border p-2 flex items-center gap-3 justify-center">SignIn with Google <FcGoogle/></button>
+                   <button className="border p-2 flex items-center gap-3 justify-center" onClick={googleSignin}>SignIn with Google <FcGoogle/></button>
                   <div className="flex flex-col gap-2">
                       <label htmlFor="email" className="text-base">Email</label>
                       <input type="email" 

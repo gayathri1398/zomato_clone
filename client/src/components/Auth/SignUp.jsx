@@ -33,6 +33,10 @@ export default function SignUp({isOpen,setIsOpen, ...props}) {
     
     dispatch(signUp(userData))};
 
+    // signing up for google
+   const googleSignUp = ()=>{
+     window.location.href ="http://localhost:4000/auth/google"
+   }
 
   return (
     <>
@@ -81,7 +85,7 @@ export default function SignUp({isOpen,setIsOpen, ...props}) {
               
                 </Dialog.Title>
                 <div className="mt-2 flex flex-col gap-3">
-                   <button className="border p-2 flex items-center gap-3 justify-center">SignUp with Google <FcGoogle/></button>
+                   <button className="border p-2 flex items-center gap-3 justify-center" onClick={googleSignUp}>SignUp with Google <FcGoogle/></button>
                   <div className="flex flex-col gap-2">
                       <label htmlFor="username" className="text-base">Username</label>
                       <input type="text"

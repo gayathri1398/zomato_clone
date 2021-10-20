@@ -16,7 +16,8 @@ import ReviewPage from "./pages/Restaurant/ReviewPage";
 import Menupage from "./pages/Restaurant/Menu.page";
 import PhotosPage from "./pages/Restaurant/Photos.page";
 import Checkoutpage from "./pages/Checkout.page";
-import RedirectRestaurant from "./pages/Restaurant/Redirect"
+import RedirectRestaurant from "./pages/Restaurant/Redirect";
+import GoogleAuthpage from "./pages/GoogleAuth.page";
 
 
 // axios default configs
@@ -37,6 +38,7 @@ function App() {
   </Route> */}
       {/* <HomeHocLayout path="/" exact component={Temp}/> */}
       <HomeHocLayout path="/:type" exact component={HomePage}/>
+      <HomeHocLayout path="/google/:token" exact component={GoogleAuthpage}/>
       <RestaurantHocLayout path="/restaurant/:id" exact component={Temp}/>
       <RestaurantHocLayout path="/restaurant/:id/overview" exact component={Overviewpage}/>
       <RestaurantHocLayout path="/restaurant/:id/order-online" exact component={OrderOnlinepage}/>
