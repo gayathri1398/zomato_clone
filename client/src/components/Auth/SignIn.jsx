@@ -18,12 +18,7 @@ export default function SignIn({isOpen,setIsOpen, ...props}) {
 
    const handleChange=(e)=> setUserData((prev )=>({...prev, [e.target.name]:e.target.value}))
 
-   const submit= ()=>{
-     setUserData({
-      email:"",
-      password:""
-    });
-    dispatch(signIn(userData))};
+ 
     
   function closeModal() {
     setIsOpen(false)
@@ -32,6 +27,14 @@ export default function SignIn({isOpen,setIsOpen, ...props}) {
   // fn to signin with google
    const googleSignin =()=>(window.location.href = "http://localhost:4000/auth/google");   // going outside the location means the nodejs port
 
+   const submit= ()=>{
+    setUserData({
+     email:"",
+     password:""
+   });
+   dispatch(signIn(userData))
+   closeModal();
+};
 
   return (
     <>

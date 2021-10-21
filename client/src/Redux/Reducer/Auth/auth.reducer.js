@@ -1,4 +1,4 @@
-import {SIGN_IN,SIGN_UP} from './auth.type';
+import {SIGNOUT, SIGNOUT, SIGN_IN,SIGN_UP} from './auth.type';
 
 const INITIALSTATE={};
 
@@ -12,6 +12,7 @@ const userReducer=(state=INITIALSTATE, action)=>{
          return{
              ...state
          }
+       
      default:
          return{
              ...state

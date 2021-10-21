@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { SIGN_IN, SIGN_UP,GOOGLE_AUTH } from './auth.type';
+import { SIGN_IN, SIGN_UP,GOOGLE_AUTH, SIGNOUT } from './auth.type';
 
 // actions
 import { getmyself } from '../User/user.action';
-
+import { cleardata } from '../User/user.action';
 
 export const signIn =(userData)=> async(dispatch)=>{
 try {
@@ -49,4 +49,17 @@ export const googleSignIn =(token)=>async(dispatch)=>{
     } catch (error) {
         return dispatch({type:"ERROR",payload:error})
     }
+}
+
+export const signOut =()=>async(dispatch)=>{
+   try {
+       localStorage.removeItem("zomatoUser");
+       cleardata();
+       window.location.href= "http://localhost:3000/delivery";
+
+       return dispatch({type:SIGNOUT, payload:{}});
+
+   } catch (error) {
+       return dispatch({type:"ERROR", payload:error})
+   }
 }

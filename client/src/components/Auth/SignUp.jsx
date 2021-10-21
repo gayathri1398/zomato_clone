@@ -31,7 +31,8 @@ export default function SignUp({isOpen,setIsOpen, ...props}) {
       password:""
     });
     
-    dispatch(signUp(userData))};
+    dispatch(signUp(userData))
+    closeModal()};
 
     // signing up for google
    const googleSignUp = ()=>{
