@@ -14,23 +14,23 @@ const FoodItem = (props) => {
     console.log({state:food})
 
     useEffect(()=>{
-        dispatch(getFood()).then((data)=>setFood(data.payload.food))
+        dispatch(getFood()).then((data)=> console.log(data.payload.food))
     },[]);
     console.log({food})
 
     return (
         <>
-        {food?.name && (
+     
         <div className=" w-full flex items-start md:gap-3 justify-between  " >
-            {
-                food?.images(
+            
+              
                     <div className="w-24 h-24 md:w-1/5 h-32 rounded-lg p-1">
                         <img src={food?.images}
                         alt="Fooditems"
                         className="w-full h-full rounded-lg" />
                    </div>
-                )
-            }
+                
+            
             <div className="flex flex-col w-2/4 md:w-2/3">
             <h1 className="text-lg font-semibold">{food?.name}</h1>
             <ReactStars
@@ -45,8 +45,8 @@ const FoodItem = (props) => {
             </div>
             <button className=" text-xs md:text-base border border-zomato-400 bg-zomato-50 rounded-lg p-1 flex ">ADD <BsPlus/></button>
         </div>
-        )
-}
+        
+
         </>
     )
 }

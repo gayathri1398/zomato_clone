@@ -22,7 +22,7 @@ import {getImage} from '../Redux/Reducer/Image/image.action'
 
 const Restaurantlayout = (props) => {
     const [restaurant,setRestaurant] = useState({
-        image:[],
+        
         name:"",
         restaurantRating:"",
         deliveryRating:"",
@@ -39,17 +39,17 @@ const Restaurantlayout = (props) => {
                ...prev,
                ...data.payload.restaurant
             }));
-            dispatch(getImage(data.payload.restaurant.photos)).then((data)=> setRestaurant((prev)=>({...prev, ...data.payload.image})))       //inside the specific action
+            dispatch(getImage(data.payload.restaurant.photos)).then((data)=> {
+                const image=[];
+                data.payload.image?.image.map(({location})=> image.push(location))
+                setRestaurant((prev)=>({...prev, image}))
+            })       //inside the specific action
        });
 
     },[])
 
-    console.log(restaurant.image)
-    //  {
-    //     setRestaurant((prev)=>({
-    //         ...prev,
-    //         ...data.payload.image.image}))}
-            
+    // console.log(restaurant.image)
+    
 
     return (
         <>

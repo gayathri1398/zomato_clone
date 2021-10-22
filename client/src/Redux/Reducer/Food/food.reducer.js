@@ -1,8 +1,9 @@
-import { GET_FOOD_LIST } from "./food.type"
+import { GET_FOOD_LIST, GET_FOOD } from "./food.type"
 
 
 const INITIAL_STATE = {
-    foodList:[]
+    foodList:[],
+    foodItem:{}
 }
 
 const foodReducer=(state=INITIAL_STATE,action)=>{
@@ -11,6 +12,11 @@ const foodReducer=(state=INITIAL_STATE,action)=>{
          return{
              ...state,
              foodList:action.payload
+         }
+         case GET_FOOD:
+         return{
+             ...state,
+             foodItem:action.payload
          }
          
       default:

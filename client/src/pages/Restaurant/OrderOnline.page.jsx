@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react';
+import React ,{useState,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux'
 import {AiFillCompass} from 'react-icons/ai';
 import {IoMdTime} from 'react-icons/io'
@@ -10,10 +10,6 @@ import FoodList from '../../components/Restaurant/Order-Online/FoodList';
 
 // actions
 import { getFoodList } from '../../Redux/Reducer/Food/food.action';
-
-
-
-
 
 const OrderOnlinepage = () => {
     const [menu,setMenu] = useState([]);
@@ -35,7 +31,7 @@ const OrderOnlinepage = () => {
       setIsSelected (e.target.id);
     }
 
-   console.log({state:menu})
+  //  console.log({state:menu})
     return (
         <div className="px-2 w-full lg:px-52 flex">
           <aside className="hidden md:block w-1/4 h-screen">  
