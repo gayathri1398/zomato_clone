@@ -5,11 +5,11 @@ import { GET_FOOD_LIST, GET_FOOD } from "./food.type";
 
 export const getFood=(foodId)=>async(dispatch)=>{
   try {
-    const food = await axios ({
+    const Food = await axios ({
         method:"GET",
         url:`http://localhost:4000/food/${foodId}`
     });
-    return dispatch({type:GET_FOOD, payload:food.data})
+    return dispatch({type:GET_FOOD, payload:Food.data})
   }
    catch (error) {
       return dispatch({type:"ERROR", payload:error})

@@ -15,23 +15,27 @@ const OrderOnlinepage = () => {
     const [menu,setMenu] = useState([]);
     const [isSelected,setIsSelected] = useState() ;    //we placed this from menulistcontainer bec it doesnt maintain any global state and everything was active when selected
 
+
+    const onClickHandler=(e)=>{
+      setIsSelected (e.target.id);
+    }
+
+    const reduxState = useSelector((globalStore)=>(globalStore.restaurant.selectedRestaurant.restaurant) );
+    
+
     const dispatch = useDispatch();
 
-     const reduxState = useSelector((globalStore)=>(globalStore.restaurant.selectedRestaurant.restaurant) );
-    
-    
+
     useEffect(()=>{
       reduxState &&
       dispatch(getFoodList(reduxState?.menu)).then((data)=>setMenu(data.payload.menus.menus) );
     },[reduxState]);
 
 // setMenu(data.payload.menus.menus)
+  console.log({state:menu})
+   
 
-    const onClickHandler=(e)=>{
-      setIsSelected (e.target.id);
-    }
-
-  //  console.log({state:menu})
+   console.log({state:menu})
     return (
         <div className="px-2 w-full lg:px-52 flex">
           <aside className="hidden md:block w-1/4 h-screen">  
@@ -53,11 +57,13 @@ const OrderOnlinepage = () => {
               <span className="flex items-center gap-1 pl-2"><IoMdTime/>45 min</span></div>
               
                <section>
-            {menu.map((item)=>{
+            {menu?.map((item)=>(
                  <FoodList {...item} key={item._id}  />
                 
-            })}
-             
+            ))}   
+           
+             {/* {...item} key={item._id} 
+             name={props.name} items={props.items} key={props._id}*/}
                </section>
           </div>
         </div>
