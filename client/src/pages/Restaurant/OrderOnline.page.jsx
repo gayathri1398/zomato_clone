@@ -62,8 +62,7 @@ const OrderOnlinepage = () => {
                 
             ))}   
            
-             {/* {...item} key={item._id} 
-             name={props.name} items={props.items} key={props._id}*/}
+           
                </section>
           </div>
         </div>

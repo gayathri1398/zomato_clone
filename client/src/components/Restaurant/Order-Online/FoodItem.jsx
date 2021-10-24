@@ -5,33 +5,28 @@ import {BsPlus} from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 
 // redux action
-import { getFood, getFoodList } from '../../../Redux/Reducer/Food/food.action';
+import { getFood } from '../../../Redux/Reducer/Food/food.action';
 
 import { getImage } from '../../../Redux/Reducer/Image/image.action';
 
 const FoodItem = (props) => {
     const[food, setFood] = useState({});
-        // images:"https://b.zmtcdn.com/data/o2_assets/19ce59acccda91b9ed7a407c970028721634401116.png",
-        // name:"",
-        // price:150,
-        // description:"it is a food"
-      
-    
     const dispatch = useDispatch();
-    
-    // useEffect(()=>{
-    //   reduxState &&
-    //   dispatch(getFood(reduxState?.menu)).then((data)=>console.log(data) );
-    // },[reduxState]);
-
   
-
-    // console.log({state:menu})
-
     useEffect(()=>{
-        dispatch(getFood(props._id)).then((data)=> setFood(data.payload.foods))
+        dispatch(getFood(props._id)).then((data)=>{ 
+           setFood(data.payload.foods);
+            dispatch(getImage(data.payload.foods?.photos)).then((data)=>
+            setFood((prev )=> ({...prev, ...data.payload.image}))
+            // const {images} = data.payload.image?.image;
+            // images?.length && (
+            // setFood((prev)=> ({...prev, image:images[0]?.location})))
+          
+        )
+        })
+        
     },[]);
-    console.log({food})
+    
 
     return (
         <>
@@ -40,7 +35,7 @@ const FoodItem = (props) => {
             
               
                     <div className="w-24 h-24 md:w-1/5 h-32 rounded-lg p-1">
-                        <img src={food?.images}
+                        <img src={food?.image && food.image[0].location}
                         alt="Fooditems"
                         className="w-full h-full rounded-lg text-base" />
                    </div>
