@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react';
 import {useDispatch} from 'react-redux'
 import ReactStars from 'react-rating-stars-component';
 import {BsPlus} from 'react-icons/bs';
-import { useSelector } from 'react-redux';
 
 // redux action
 import { getFood } from '../../../Redux/Reducer/Food/food.action';
