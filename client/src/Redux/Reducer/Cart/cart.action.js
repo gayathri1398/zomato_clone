@@ -59,7 +59,7 @@ export const deleteCart=(foodId)=>async(dispatch)=>{
     }
 };
 
-export const incCart =()=>async(dispatch)=>{
+export const incQty=(foodID)=>async(dispatch)=>{
     try {
         let cartData = {cart:[]};
         if(localStorage.zomatoCart){
@@ -67,8 +67,28 @@ export const incCart =()=>async(dispatch)=>{
             cartData.cart = cart;
         }
 
+        cartData.cart = cartData.cart.map(({_id})=> _id===foodID ? {...food, quantity= food.quantity + 1} : food)
+        return dispatch({type:INCREMENT_CART, payload:cartData.cart})
         
     } catch (error) {
+        return dispatch({type:"ERROR", payload:error})
+    }
+};
+
+export const decQty =(foodID)=>async(dispatch)=>{
+    try {
+        let cartData = {cart:[]};
         
+        if(localStorage.zomatoCart){
+            const {cart} = localStorage.getItem("zomatoCart");
+            cartData.cart = cart;
+        }
+
+        cartData.cart = cartData.cart.map(({_id})=> _id===foodID ? {...food, quantity: food.quantity-1}: food);
+
+        return dispatch({type:DECREMENT_CART, payload:cartData.cart});
+        
+    } catch (error) {
+        return dispatch({type:"ERROR", payload:error});
     }
 }
