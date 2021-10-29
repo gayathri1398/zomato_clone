@@ -5,11 +5,15 @@ import {BsPlus} from 'react-icons/bs';
 
 // redux action
 import { getFood } from '../../../Redux/Reducer/Food/food.action';
-
 import { getImage } from '../../../Redux/Reducer/Image/image.action';
+import { addCart } from '../../../Redux/Reducer/Cart/cart.action';
+
+
 
 const FoodItem = (props) => {
     const[food, setFood] = useState({});
+    const [cart,setCartData] = useState([]);
+
     const dispatch = useDispatch();
   
     useEffect(()=>{
@@ -17,6 +21,7 @@ const FoodItem = (props) => {
            setFood(data.payload.foods);
             dispatch(getImage(data.payload.foods?.photos)).then((data)=>
             setFood((prev )=> ({...prev, ...data.payload.image}))
+
             // const {images} = data.payload.image?.image;
             // images?.length && (
             // setFood((prev)=> ({...prev, image:images[0]?.location})))
@@ -25,6 +30,11 @@ const FoodItem = (props) => {
         })
         
     },[]);
+
+    const addToCart=()=>{
+      dispatch(addCart({...food,quantity:1}))
+      setCartData((prev)=> ({...prev, isAddedToCart:true}))
+    }
     
 
     return (
@@ -52,7 +62,14 @@ const FoodItem = (props) => {
                <p className="font-light">₹{food?.price}</p>
                <p className="text-gray-400 text-sm truncate">{food?.description}</p>
             </div>
-            <button className=" text-xs md:text-base border border-zomato-400 bg-zomato-50 rounded-lg p-1 flex ">ADD <BsPlus/></button>
+           
+            <button className=" text-xs md:text-base border border-zomato-400 bg-zomato-50 rounded-lg p-1 flex " 
+            onClick={addToCart}
+            disabled={food.isAddedToCart}>
+                {food.isAddedToCart ?( "ADDED" ) :
+                <>ADD <BsPlus/></>
+                }
+                </button>
         </div>
         
 

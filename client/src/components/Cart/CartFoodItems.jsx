@@ -1,6 +1,13 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react';
+
+// actions
+
 
 const CartFoodItems = () => {
+ 
+
+
+
     return (
         <div className="flex items-center justify-between p-2 ">
         <h1 className="text-base">Chicken Lollipop</h1>

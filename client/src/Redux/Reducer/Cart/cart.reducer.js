@@ -1,10 +1,10 @@
 import {GET_CART,ADD_CART,DELETE_CART, INCREMENT_CART,DECREMENT_CART} from "./cart.type";
 
-const INITIAL_VALUE={
+const INITIAL_STATE={
     cart :[]
 }
 
-const cartReducer = (state= INITIAL_VALUE, action)=>{
+const cartReducer = (state= INITIAL_STATE, action)=>{
     switch (action.type){
         case GET_CART:
             return{
@@ -30,7 +30,11 @@ const cartReducer = (state= INITIAL_VALUE, action)=>{
                             return{
                                 ...state,
                                 cart:action.payload
-                            }
+                            };
+                            default:
+                                return{
+                                    ...state
+                                }
     }
 };
 

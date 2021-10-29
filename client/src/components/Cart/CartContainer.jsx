@@ -1,12 +1,21 @@
 import React, {useState} from 'react';
 import {IoMdArrowDropup,IoMdArrowDropright,IoMdClose,IoMdArrowDropdown} from 'react-icons/io';
+import {useSelector,useDispatch} from 'react-redux'
 
 
 // components
 import CartFoodItems from './CartFoodItems';
 
+// actions
+import { getCart } from '../../Redux/Reducer/Cart/cart.action';
+
 
 const CartSm =({Dropup})=>{
+    const dispatch = useDispatch();
+     
+    const reduxState = useSelector((globalState)=> globalState.cart.cart);
+    // dispatch(getCart())
+    
     return<>
     <div className="fixed w-full z-30 text-gray-400 bg-white bottom-0 flex justify-between items-center px-2 py-1 md:hidden" >
         <div className="flex flex-col">
@@ -21,7 +30,9 @@ const CartSm =({Dropup})=>{
     </>
 }
 const CartLg =({Dropup})=>{
-   
+    const reduxState = useSelector((globalState)=> globalState.cart.cart);
+
+
      return<>
     <div className="hidden md:flex fixed w-full z-30 text-gray-400 bg-white bottom-0 justify-between items-center px-2 py-1 lg:px-52">
         <div className="flex flex-col">
