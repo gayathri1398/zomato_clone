@@ -12,7 +12,6 @@ import { addCart } from '../../../Redux/Reducer/Cart/cart.action';
 
 const FoodItem = (props) => {
     const[food, setFood] = useState({});
-    const [cart,setCartData] = useState([]);
 
     const dispatch = useDispatch();
   
@@ -33,9 +32,10 @@ const FoodItem = (props) => {
 
     const addToCart=()=>{
       dispatch(addCart({...food,quantity:1}))
-      setCartData((prev)=> ({...prev, isAddedToCart:true}))
+      setFood((prev)=> ({...prev, isAddedToCart:true}))
+      console.log(food)
     }
-    
+   
 
     return (
         <>
@@ -63,11 +63,12 @@ const FoodItem = (props) => {
                <p className="text-gray-400 text-sm truncate">{food?.description}</p>
             </div>
            
-            <button className=" text-xs md:text-base border border-zomato-400 bg-zomato-50 rounded-lg p-1 flex " 
+            <button
             onClick={addToCart}
-            disabled={food.isAddedToCart}>
-                {food.isAddedToCart ?( "ADDED" ) :
-                <>ADD <BsPlus/></>
+            disabled={food.isAddedToCart}
+            className=" text-xs md:text-base border border-zomato-400 bg-zomato-50 rounded-lg p-1 flex " >
+                {food.isAddedToCart ? ( "ADDED")  :
+               ( <>ADD <BsPlus/></>)
                 }
                 </button>
         </div>
