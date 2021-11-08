@@ -37,7 +37,7 @@ const OrderOnlinepage = () => {
 
    console.log({state:menu})
     return (
-        <div className="px-2 w-full lg:px-52 flex">
+        <div className="px-2 w-full lg:px-52 flex z-10">
           <aside className="hidden md:block w-1/4 h-screen">  
             {
               menu?.map((item)=>(

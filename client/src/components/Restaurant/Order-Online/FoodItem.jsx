@@ -33,14 +33,14 @@ const FoodItem = (props) => {
     const addToCart=()=>{
       dispatch(addCart({...food,quantity:1}))
       setFood((prev)=> ({...prev, isAddedToCart:true}))
-      console.log(food)
+      
     }
    
 
     return (
         <>
      
-        <div className=" w-full flex items-start md:gap-3 justify-between  " >
+        <div className=" w-full flex items-start md:gap-3 justify-between" >
             
               
                     <div className="w-24 h-24 md:w-1/5 h-32 rounded-lg p-1">
@@ -50,7 +50,7 @@ const FoodItem = (props) => {
                    </div>
                 
             
-            <div className="flex flex-col w-2/4 md:w-2/3">
+            <div className="flex flex-col w-2/4 md:w-2/3 ">
             <h1 className="text-lg font-semibold">{food?.name}</h1>
             <ReactStars
                 count={5}

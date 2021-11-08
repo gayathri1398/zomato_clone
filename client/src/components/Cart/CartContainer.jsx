@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {IoMdArrowDropup,IoMdArrowDropright,IoMdClose,IoMdArrowDropdown} from 'react-icons/io';
 import {useSelector,useDispatch} from 'react-redux'
 
@@ -10,11 +10,9 @@ import CartFoodItems from './CartFoodItems';
 import { getCart } from '../../Redux/Reducer/Cart/cart.action';
 
 
+
 const CartSm =({Dropup})=>{
-    const dispatch = useDispatch();
-     
-    const reduxState = useSelector((globalState)=> globalState.cart.cart);
-    // dispatch(getCart())
+    // const dispatch = useDispatch();
     
     return<>
     <div className="fixed w-full z-30 text-gray-400 bg-white bottom-0 flex justify-between items-center px-2 py-1 md:hidden" >
@@ -30,7 +28,6 @@ const CartSm =({Dropup})=>{
     </>
 }
 const CartLg =({Dropup})=>{
-    const reduxState = useSelector((globalState)=> globalState.cart.cart);
 
 
      return<>
@@ -58,8 +55,8 @@ const CartContainer = () => {
     const Dropup =()=>setIsCartDropup((prev)=>!prev)
     const Dropdown =()=>setIsCartDropup((prev)=>!prev)
   
-    const changeIconup =()=> setIcon((prev)=>!prev);
-    const changeIcondown =()=> setIcon((prev)=>!prev);
+    const reduxState = useSelector((globalState)=> globalState.cart.cart);
+    console.log(reduxState);
     return (
    <>
         <div>
@@ -73,14 +70,16 @@ const CartContainer = () => {
             
             <hr className="mt-2 "/>
                 <div className="flex flex-col gap-2 border-b h-60 overflow-y-scroll pb-20 ">
-                    <CartFoodItems/> 
+                   {reduxState.map((food)=> (
+                        <CartFoodItems food={food?.name} price={food?.price} quantity={food?.quantity}/>
+                   ))} 
                 </div>
            </div>
           )
       }
     
         <CartSm Dropup={Dropup} />
-        <CartLg Dropup={Dropup}  />
+        <CartLg Dropup={Dropup} />
         </div>
    </>
     )
